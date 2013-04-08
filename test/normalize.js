@@ -14,7 +14,7 @@ tap.test("normalize some package data", function(t) {
   t.equal( warnings.length, 1, "There's exactly one warning.")
   fs.readFile(rpjPath, function(err, data) {
     if(err) throw err
-    // Various changes have been mode
+    // Various changes have been made
     t.notEqual(packageData, JSON.parse(data), "Output is different from input.")
     t.end()
   })
