@@ -7,7 +7,7 @@
     "type": "git",
     "url": "git://github.com:meryn/read-package-data.git"
   },
-  "main": "normalize.js",
+  "main": "lib/normalize.js",
   "scripts": {
     "test": "tap test/*.js"
   },
