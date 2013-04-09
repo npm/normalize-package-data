@@ -29,4 +29,6 @@ function verifyFields (t, normalized, original) {
   t.has(normalized.dependencies, original.optionalDependencies, "opt depedencies are copied into dependencies")
   t.has(normalized.dependencies, original.dependencies, "regular depedencies stay in place")
   t.deepEqual(normalized.devDependencies, original.devDependencies)
+  t.type(normalized.bugs, "object", "bugs should become object")
+  t.equal(normalized.bugs.url, "https://github.com/isaacs/read-package-json/issues")
 }
