@@ -7,7 +7,7 @@ var async = require("async")
 
 var data, clonedData
 
-tap.test("cosistent normalization", function(t) {
+tap.test("consistent normalization", function(t) {
   path.resolve(__dirname, "./fixtures/read-package-json.json")
   fs.readdir (__dirname + "/fixtures", function (err, entries) {
     verifyConsistency = function(entryName, next) {
