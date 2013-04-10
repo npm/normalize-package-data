@@ -38,7 +38,7 @@ If the supplied data has an invalid name or version vield, `normalizeData` will 
 ## What normalization entails
 
 * The value of `name` field gets trimmed
-* The value of the `version` field gets cleaned by `semver.clean`. See [documentation of the semver module](https://github.com/isaacs/node-semver).
+* The value of the `version` field gets cleaned by `semver.clean`. See [documentation for the semver module](https://github.com/isaacs/node-semver).
 * If `repository` field is a string, it will become am object with `url` set to the original string value, and `type` set to `"git"`.
 * If `files` field is not an array, it will be removed.
 * If `bin` field is a string, then `bin` field will become an object with `name` set to the value of the `name` field, and `bin` set to the original string value.
@@ -63,7 +63,7 @@ The value of the name field may not
 
 ### Rules for version field
 
-The value of the version field must be a valid *semver* string, as determined by the `semver.valid` method. See [documentation of the semver module](https://github.com/isaacs/node-semver).
+The value of the version field must be a valid *semver* string, as determined by the `semver.valid` method. See [documentation for the semver module](https://github.com/isaacs/node-semver).
 
 ## Credits
 
