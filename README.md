@@ -37,16 +37,31 @@ If the supplied data has an invalid name or version vield, `normalizeData` will 
 
 ## What normalization entails
 
-* if `repository` field is a string, it will become am object with `url` set to the original string value, and `type` set to `"git"`.
-* if `files` field is not an array, it will be removed
-* if `bin` field is a string, then `bin` field will become an object with `name` set to the value of the `name` field, and `bin` set to the original string value
-* if `man` field is a string, it will become an array with the original string as its sole member
-* if `bundledDependencies` field (a typo) exists and `bundleDependencies` field does not, `bundledDependencies` will get renamed to `bundleDependencies`.
-* if `keywords` field is string, it is considered to be a list of keywords separated by one or more white-space characters. It gets converted to an array by splitting on `\s+`.
-* all people fields (`author`, `maintainers`, `contributors`) get converted into objects with name, email and url properties.
-* if the value of any of the depedencies fields  (`dependencies`, `devDependencies`, `optionalDependencies`) are strings, they get converted into objects with familiar `name=>value` pairs.
-* the values in `optionalDependencies` get added to `dependencies`. `optionalDependencies` array is left untouched.
+* The value of `name` field gets trimmed
+* The value of the 'version` field gets cleaned by `semver.clean`. See [documentation of the semver module](https://github.com/isaacs/node-semver).
+* If `repository` field is a string, it will become am object with `url` set to the original string value, and `type` set to `"git"`.
+* If `files` field is not an array, it will be removed.
+* If `bin` field is a string, then `bin` field will become an object with `name` set to the value of the `name` field, and `bin` set to the original string value.
+* If `man` field is a string, it will become an array with the original string as its sole member
+* If `keywords` field is string, it is considered to be a list of keywords separated by one or more white-space characters. It gets converted to an array by splitting on `\s+`.
+* If `bundledDependencies` field (a typo) exists and `bundleDependencies` field does not, `bundledDependencies` will get renamed to `bundleDependencies`.
+* All people fields (`author`, `maintainers`, `contributors`) get converted into objects with name, email and url properties.
+* If the value of any of the depedencies fields  (`dependencies`, `devDependencies`, `optionalDependencies`) are strings, they get converted into objects with familiar `name=>value` pairs.
+* The values in `optionalDependencies` get added to `dependencies`. `optionalDependencies` array is left untouched.
+* If `description` field does not exists, but `readme` field does, then (more or less) the first paragraph of text that's found in the readme is taken a value for `description`.
 
+### Rules for name field
+
+The value of the name field may not
+
+* start with a period.
+* contain the following characters: `/@\s+%`
+* contain and characters that would need to be encoded for use in urls.
+* resemble the word `node_modules` or `favicon.ico` (case doesn't matter).
+
+### Rules for version field
+
+The value of the version field must be a valid *semver* string, as determined by the `semver.valid` method. See [documentation of the semver module](https://github.com/isaacs/node-semver).
 
 ## Credits
 
