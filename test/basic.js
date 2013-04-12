@@ -19,7 +19,7 @@ tap.test("basic test", function (t) {
 function verifyFields (t, normalized, original) {
   t.equal(normalized.version, original.version, "Version field stays same")
   t.equal(normalized._id, normalized.name + "@" + normalized.version, "It gets good id.")
-  t.equal(normalized.name, original.name, "Name statys same.")
+  t.equal(normalized.name, original.name, "Name stays the same.")
   t.type(normalized.author, "object", "author field becomes object")
   t.deepEqual(normalized.scripts, original.scripts, "scripts field (object) stays same")
   t.equal(normalized.main, original.main)
