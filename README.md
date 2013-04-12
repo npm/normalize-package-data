@@ -35,7 +35,7 @@ If you don't provide a warning function, `normalizeData` functions silently.
 
 If the supplied data has an invalid name or version vield, `normalizeData` will throw an error. Depending on where you call `normalizeData`, you may want to catch these errors so can pass them to a callback.
 
-## What normalization entails
+## What normalization (currently) entails
 
 * The value of `name` field gets trimmed
 * The value of the `version` field gets cleaned by `semver.clean`. See [documentation for the semver module](https://github.com/isaacs/node-semver).
@@ -51,6 +51,8 @@ If the supplied data has an invalid name or version vield, `normalizeData` will 
 * If `description` field does not exists, but `readme` field does, then (more or less) the first paragraph of text that's found in the readme is taken a value for `description`.
 * If `bugs` field is a string, the value of `bugs` field is changed into an object with `url` set to the original string value.
 * If `bugs` field does not exist, but `repository` field points to a repository hosted on github, the value of the `bugs` field gets set to an url in the form of https://github.com/[owner-name]/[repo-name]/issues .
+* If `bugs` field is an object, the resulting value only has email and url properties. If email and url properties are not strings, they are ignored. If no valid values for either email or url is found, bugs field will be removed.
+* If `homepage` field is not a string, it will be removed.
 
 ### Rules for name field
 
