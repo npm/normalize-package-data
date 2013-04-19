@@ -21,11 +21,29 @@ tap.test("normalize some package data", function(t) {
 })
 
 tap.test("runs without passing warning function", function(t) {
-  packageData = require(rpjPath)
+  var packageData = require(rpjPath)
   fs.readFile(rpjPath, function(err, data) {
     if(err) throw err
     normalize(JSON.parse(data))
     t.ok(true, "If you read this, this means I'm still alive.")
     t.end()
   })
+})
+
+tap.test("empty object", function(t) {
+  var packageData = {}
+  var expect =
+    { name: '',
+      version: '',
+      readme: 'ERROR: No README data found!',
+      _id: '@' }
+
+  var warnings = []
+  function warn(m) {
+    warnings.push(m)
+  }
+  normalize(packageData, warn)
+  t.same(packageData, expect)
+  t.same(warnings, ["No readme data!"])
+  t.end()
 })
