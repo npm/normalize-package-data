@@ -12,7 +12,8 @@
     "test": "tap test/*.js"
   },
   "dependencies": {
-    "semver": "1.x"
+    "semver": "1.x",
+    "github-url-from-git": "~1.0.0"
   },
   "devDependencies": {
     "tap": "~0.2.5",
