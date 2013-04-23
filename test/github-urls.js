@@ -25,7 +25,7 @@ tap.test("consistent normalization", function(t) {
       data = JSON.parse(contents.toString())
       normalize(data, warn)
       if(data.name == "node-module_exist") {
-        t.ok(data.bugs === undefined, "gist repo url's can't have bugs url inferred")
+        t.same(data.bugs.url, "https://gist.github.com/3135914")
       }
       if(data.name == "read-package-json") {
         t.same(data.bugs.url, "https://github.com/isaacs/read-package-json/issues")
