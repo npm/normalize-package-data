@@ -1,9 +1,12 @@
 var tap = require("tap")
 var fs = require("fs")
 var path = require("path")
+
+var globals = Object.keys(global)
+
 var normalize = require("../lib/normalize")
 
-rpjPath = path.resolve(__dirname,"./fixtures/read-package-json.json")
+var rpjPath = path.resolve(__dirname,"./fixtures/read-package-json.json")
 tap.test("normalize some package data", function(t) {
   var packageData = require(rpjPath)
   var warnings = []
@@ -45,5 +48,10 @@ tap.test("empty object", function(t) {
   normalize(packageData, warn)
   t.same(packageData, expect)
   t.same(warnings, ["No readme data!"])
+  t.end()
+})
+
+tap.test('no new globals', function(t) {
+  t.same(Object.keys(global), globals)
   t.end()
 })
