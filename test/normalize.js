@@ -84,6 +84,16 @@ tap.test("urls required", function(t) {
   t.end()
 })
 
+tap.test("gist bugs url", function(t) {
+  var d = {
+    repository: "git@gist.github.com:123456.git"
+  }
+  normalize(d)
+  t.same(d.repository, { type: 'git', url: 'git@gist.github.com:123456.git' })
+  t.same(d.bugs, { url: 'https://gist.github.com/123456' })
+  t.end();
+});
+
 tap.test('no new globals', function(t) {
   t.same(Object.keys(global), globals)
   t.end()
