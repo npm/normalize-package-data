@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "semver": "1.x",
-    "github-url-from-git": "~1.0.0"
+    "github-url-from-git": "git://github.com/isaacs/node-github-url-from-git"
   },
   "devDependencies": {
     "tap": "~0.2.5",
