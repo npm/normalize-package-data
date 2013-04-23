@@ -9,7 +9,12 @@ var data, clonedData
 var warn
 
 tap.test("consistent normalization", function(t) {
-  entries = ['read-package-json.json','http-server.json',"movefile.json"] // uncomment to limit to a specific file
+  entries = [
+    'read-package-json.json',
+    'http-server.json',
+    "movefile.json",
+    "node-module_exist.json"
+  ]
   verifyConsistency = function(entryName, next) {
     warn = function(msg) { 
       // t.equal("",msg) // uncomment to have some kind of logging of warnings
@@ -19,6 +24,9 @@ tap.test("consistent normalization", function(t) {
       if (err) return next(err)
       data = JSON.parse(contents.toString())
       normalize(data, warn)
+      if(data.name == "node-module_exist") {
+        t.ok(data.bugs === undefined, "gist repo url's can't have bugs url inferred")
+      }
       if(data.name == "read-package-json") {
         t.same(data.bugs.url, "https://github.com/isaacs/read-package-json/issues")
       }
