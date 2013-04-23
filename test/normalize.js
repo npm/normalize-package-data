@@ -51,6 +51,39 @@ tap.test("empty object", function(t) {
   t.end()
 })
 
+tap.test("urls required", function(t) {
+  var warnings = []
+  function warn(w) {
+    warnings.push(w)
+  }
+  normalize({
+    bugs: {
+      url: "/1",
+      email: "not an email address"
+    }
+  }, warn)
+  var a
+  normalize(a={
+    readme: "read yourself how about",
+    homepage: "stragle planarf",
+    bugs: "what is this i don't even",
+    repository: "Hello."
+  }, warn)
+
+  console.error(a)
+
+  var expect =
+    [ 'No readme data!',
+      'bugs.url field must be a string url. Deleted.',
+      'bugs.email field must be a string email. Deleted.',
+      'Normalized value of bugs field is an empty object. Deleted.',
+      'Bug string field must be url, email, or {email,url}',
+      'Normalized value of bugs field is an empty object. Deleted.',
+      'homepage field must be a string url. Deleted.' ]
+  t.same(warnings, expect)
+  t.end()
+})
+
 tap.test('no new globals', function(t) {
   t.same(Object.keys(global), globals)
   t.end()
