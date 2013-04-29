@@ -40,16 +40,16 @@ If the supplied data has an invalid name or version vield, `normalizeData` will 
 * The value of `name` field gets trimmed.
 * The value of the `version` field gets cleaned by `semver.clean`. See [documentation for the semver module](https://github.com/isaacs/node-semver).
 * If `name` and/or `version` fields are missing, they are set to empty strings.
-* If `repository` field is a string, it will become an object with `url` set to the original string value, and `type` set to `"git"`.
 * If `files` field is not an array, it will be removed.
 * If `bin` field is a string, then `bin` field will become an object with `name` set to the value of the `name` field, and `bin` set to the original string value.
 * If `man` field is a string, it will become an array with the original string as its sole member.
 * If `keywords` field is string, it is considered to be a list of keywords separated by one or more white-space characters. It gets converted to an array by splitting on `\s+`.
-* If `bundledDependencies` field (a typo) exists and `bundleDependencies` field does not, `bundledDependencies` will get renamed to `bundleDependencies`.
 * All people fields (`author`, `maintainers`, `contributors`) get converted into objects with name, email and url properties.
+* If `bundledDependencies` field (a typo) exists and `bundleDependencies` field does not, `bundledDependencies` will get renamed to `bundleDependencies`.
 * If the value of any of the dependencies fields  (`dependencies`, `devDependencies`, `optionalDependencies`) is a string, it gets converted into an object with familiar `name=>value` pairs.
 * The values in `optionalDependencies` get added to `dependencies`. The `optionalDependencies` array is left untouched.
 * If `description` field does not exists, but `readme` field does, then (more or less) the first paragraph of text that's found in the readme is taken as value for `description`.
+* If `repository` field is a string, it will become an object with `url` set to the original string value, and `type` set to `"git"`.
 * If `bugs` field is a string, the value of `bugs` field is changed into an object with `url` set to the original string value.
 * If `bugs` field does not exist, but `repository` field points to a repository hosted on GitHub, the value of the `bugs` field gets set to an url in the form of https://github.com/[owner-name]/[repo-name]/issues . If the repository field points to a GitHub Gist repo url, the associated http url is chosen.
 * If `bugs` field is an object, the resulting value only has email and url properties. If email and url properties are not strings, they are ignored. If no valid values for either email or url is found, bugs field will be removed.
