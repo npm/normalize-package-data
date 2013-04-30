@@ -70,4 +70,9 @@ If `version` field is given, the value of the version field must be a valid *sem
 
 ## Credits
 
-This code is based on read-package-json written by Isaac Schlueter.
+This package contains code based on read-package-json written by Isaac Z. Schlueter. Used with permisson.
+
+## License
+
+normalize-package-data is released under the [BSD 2-Clause License](http://opensource.org/licenses/MIT).  
+Copyright (c) 2013 Meryn Stol  
