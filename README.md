@@ -2,6 +2,8 @@
 
 normalize-package data exports a function that normalizes package metadata. This data is typically found in a package.json file, but in principle could come from any source - for example the npm registry.
 
+normalize-package-data is used by [read-package-json](https://npmjs.org/package/read-package-json) to normalize the data it reads from a package.json file. In turn, read-package-json is used by [npm](https://npmjs.org/package/npm) and various npm-related tools.
+
 ## Installation
 
 ```
