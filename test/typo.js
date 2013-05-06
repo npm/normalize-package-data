@@ -28,11 +28,11 @@ test('typos', function(t) {
       'publicationConfig should probably be publishConfig',
       'No repository field.',
       'No repository field.',
-      'No readme data!',
+      'No readme data.',
       'bugs.url field must be a string url. Deleted.',
       'Normalized value of bugs field is an empty object. Deleted.',
       'No repository field.',      
-      'No readme data!' ]
+      'No readme data.' ]
 
   normalize({"dependancies": "dependencies"
             ,"dependecies": "dependencies"
