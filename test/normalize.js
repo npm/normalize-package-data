@@ -47,7 +47,7 @@ tap.test("empty object", function(t) {
   }
   normalize(packageData, warn)
   t.same(packageData, expect)
-  t.same(warnings, ["No readme data!"])
+  t.same(warnings, ["No repository field.","No readme data!"])
   t.end()
 })
 
@@ -73,7 +73,8 @@ tap.test("urls required", function(t) {
   console.error(a)
 
   var expect =
-    [ 'No readme data!',
+    [ 'No repository field.',
+      'No readme data!',
       'bugs.url field must be a string url. Deleted.',
       'bugs.email field must be a string email. Deleted.',
       'Normalized value of bugs field is an empty object. Deleted.',

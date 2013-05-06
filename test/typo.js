@@ -26,9 +26,12 @@ test('typos', function(t) {
       'autor should probably be author',
       'contributers should probably be contributors',
       'publicationConfig should probably be publishConfig',
+      'No repository field.',
+      'No repository field.',
       'No readme data!',
       'bugs.url field must be a string url. Deleted.',
       'Normalized value of bugs field is an empty object. Deleted.',
+      'No repository field.',      
       'No readme data!' ]
 
   normalize({"dependancies": "dependencies"
