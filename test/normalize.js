@@ -65,7 +65,7 @@ tap.test("urls required", function(t) {
   var a
   normalize(a={
     readme: "read yourself how about",
-    homepage: "stragle planarf",
+    homepage: 123,
     bugs: "what is this i don't even",
     repository: "Hello."
   }, warn)
@@ -82,6 +82,27 @@ tap.test("urls required", function(t) {
       'Normalized value of bugs field is an empty object. Deleted.',
       'homepage field must be a string url. Deleted.' ]
   t.same(warnings, expect)
+  t.end()
+})
+
+tap.test("homepage field must start with a protocol.", function(t) {
+  var warnings = []
+  function warn(w) {
+    warnings.push(w)
+  }
+  var a
+  normalize(a={
+    homepage: 'example.org'
+  }, warn)
+
+  console.error(a)
+
+  var expect =
+    [ 'No repository field.',
+      'No readme data.',
+      'homepage field must start with a protocol.' ]
+  t.same(warnings, expect)
+  t.same(a.homepage, 'http://example.org')
   t.end()
 })
 
