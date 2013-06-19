@@ -47,7 +47,11 @@ tap.test("empty object", function(t) {
   }
   normalize(packageData, warn)
   t.same(packageData, expect)
-  t.same(warnings, ["No repository field.","No readme data."])
+  t.same(warnings, [
+    "No description",
+    "No repository field.",
+    "No README data"
+  ])
   t.end()
 })
 
@@ -73,14 +77,15 @@ tap.test("urls required", function(t) {
   console.error(a)
 
   var expect =
-    [ 'No repository field.',
-      'No readme data.',
-      'bugs.url field must be a string url. Deleted.',
-      'bugs.email field must be a string email. Deleted.',
-      'Normalized value of bugs field is an empty object. Deleted.',
-      'Bug string field must be url, email, or {email,url}',
-      'Normalized value of bugs field is an empty object. Deleted.',
-      'homepage field must be a string url. Deleted.' ]
+    [ "No description",
+      "No repository field.",
+      "bugs.url field must be a string url. Deleted.",
+      "bugs.email field must be a string email. Deleted.",
+      "Normalized value of bugs field is an empty object. Deleted.",
+      "No README data",
+      "Bug string field must be url, email, or {email,url}",
+      "Normalized value of bugs field is an empty object. Deleted.",
+      "homepage field must be a string url. Deleted." ]
   t.same(warnings, expect)
   t.end()
 })
@@ -98,9 +103,10 @@ tap.test("homepage field must start with a protocol.", function(t) {
   console.error(a)
 
   var expect =
-    [ 'No repository field.',
-      'No readme data.',
-      'homepage field must start with a protocol.' ]
+    [ "No description",
+      "No repository field.",
+      "No README data",
+      "homepage field must start with a protocol." ]
   t.same(warnings, expect)
   t.same(a.homepage, 'http://example.org')
   t.end()
