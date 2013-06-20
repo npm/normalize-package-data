@@ -35,20 +35,20 @@ test("strict", function(t) {
     t.equal(threw, true)
   }
 
-  try {
-    threw = false
-    normalize({name:"x",version:"1.2.3",dependencies:{y:">01.02.03"}}, true)
-  } catch (er) {
-    threw = true
-    t.equal(er.message, 'Invalid dependency: y@">01.02.03"')
-  } finally {
-    t.equal(threw, true)
-  }
-
   // these should not throw
-  var slob = {name:" X ",version:"01.02.03",dependencies:{y:">01.02.03"}}
+  var slob = {name:" X ",version:"01.02.03",dependencies:{
+    y:">01.02.03",
+    z:"! 99 $$ASFJ(Aawenf90awenf as;naw.3j3qnraw || an elephant"
+  }}
   normalize(slob, false)
-  console.error(slob)
+  t.same(slob,
+         { name: 'X',
+           version: '1.2.3',
+           dependencies:
+            { y: '>01.02.03',
+              z: '! 99 $$ASFJ(Aawenf90awenf as;naw.3j3qnraw || an elephant' },
+           readme: 'ERROR: No README data found!',
+           _id: 'X@1.2.3' })
 
   t.end()
 })
