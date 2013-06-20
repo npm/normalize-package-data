@@ -122,14 +122,14 @@ tap.test("gist bugs url", function(t) {
   t.end();
 });
 
-tap.test('no new globals', function(t) {
-  t.same(Object.keys(global), globals)
-  t.end()
-})
-
 tap.test("singularize repositories", function(t) {
-  d = {repositories:["git@gist.github.com:123456.git"]}
+  var d = {repositories:["git@gist.github.com:123456.git"]}
   normalize(d)
   t.same(d.repository, { type: 'git', url: 'git@gist.github.com:123456.git' })
   t.end()
 });
+
+tap.test('no new globals', function(t) {
+  t.same(Object.keys(global), globals)
+  t.end()
+})
