@@ -49,6 +49,8 @@ normalizeData(packageData, warnFn)
 
 You may combine strict validation with warnings by passing `true` as the second argument, and `warnFn` as third.
 
+When `private` field is set to `true`, no warnings will be generated.
+
 ### Potential exceptions
 
 If the supplied data has an invalid name or version vield, `normalizeData` will throw an error. Depending on where you call `normalizeData`, you may want to catch these errors so can pass them to a callback.
