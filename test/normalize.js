@@ -129,6 +129,13 @@ tap.test("singularize repositories", function(t) {
   t.end()
 });
 
+tap.test("treat visionmedia/express as github repo", function(t) {
+  var d = {repository: {type: "git", url: "visionmedia/express"}}
+  normalize(d)
+  t.same(d.repository, { type: "git", url: "git://github.com/visionmedia/express" })
+  t.end()
+});
+
 tap.test('no new globals', function(t) {
   t.same(Object.keys(global), globals)
   t.end()
