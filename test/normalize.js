@@ -136,6 +136,13 @@ tap.test("treat visionmedia/express as github repo", function(t) {
   t.end()
 });
 
+tap.test("treat isaacs/node-graceful-fs as github repo", function(t) {
+  var d = {repository: {type: "git", url: "isaacs/node-graceful-fs"}}
+  normalize(d)
+  t.same(d.repository, { type: "git", url: "git://github.com/isaacs/node-graceful-fs" })
+  t.end()
+});
+
 tap.test('no new globals', function(t) {
   t.same(Object.keys(global), globals)
   t.end()
