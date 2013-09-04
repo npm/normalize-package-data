@@ -143,6 +143,33 @@ tap.test("treat isaacs/node-graceful-fs as github repo", function(t) {
   t.end()
 });
 
+tap.test("homepage field will set to github url if repository is a github repo", function(t) {
+  var a
+  normalize(a={
+    repository: { type: "git", url: "git://github.com/isaacs/node-graceful-fs" }
+  })
+  t.same(a.homepage, 'https://github.com/isaacs/node-graceful-fs')
+  t.end()
+})
+
+tap.test("homepage field will set to github gist url if repository is a gist", function(t) {
+  var a
+  normalize(a={
+    repository: { type: "git", url: "git@gist.github.com:123456.git" }
+  })
+  t.same(a.homepage, 'https://gist.github.com/123456')
+  t.end()
+})
+
+tap.test("homepage field will set to github gist url if repository is a shorthand reference", function(t) {
+  var a
+  normalize(a={
+    repository: { type: "git", url: "sindresorhus/chalk" }
+  })
+  t.same(a.homepage, 'https://github.com/sindresorhus/chalk')
+  t.end()
+})
+
 tap.test('no new globals', function(t) {
   t.same(Object.keys(global), globals)
   t.end()
