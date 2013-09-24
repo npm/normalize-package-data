@@ -170,6 +170,23 @@ tap.test("homepage field will set to github gist url if repository is a shorthan
   t.end()
 })
 
+tap.test("deprecation warning for array in dependencies fields", function(t) {
+  var a
+  var warnings = []
+  function warn(w) {
+    warnings.push(w)
+  }
+  normalize(a={
+    dependencies: [],
+    devDependencies: [],
+    optionalDependencies: []
+  }, warn)  
+  t.ok(~warnings.indexOf("specifying dependencies as array is deprecated"), "deprecation warning")
+  t.ok(~warnings.indexOf("specifying devDependencies as array is deprecated"), "deprecation warning")
+  t.ok(~warnings.indexOf("specifying optionalDependencies as array is deprecated"), "deprecation warning")
+  t.end()
+})
+
 tap.test('no new globals', function(t) {
   t.same(Object.keys(global), globals)
   t.end()
