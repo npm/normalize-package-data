@@ -55,6 +55,30 @@ tap.test("empty object", function(t) {
   t.end()
 })
 
+tap.test("core module name", function(t) {
+  var warnings = []
+  function warn(m) {
+    warnings.push(m)
+  }
+  var a
+  normalize(a={
+    name: "http",
+    readme: "read yourself how about",
+    homepage: 123,
+    bugs: "what is this i don't even",
+    repository: "Hello."
+  }, warn)
+
+  var expect = [
+      "http is also the name of a node core module.",
+      "Bug string field must be url, email, or {email,url}",
+      "Normalized value of bugs field is an empty object. Deleted.",
+      "homepage field must be a string url. Deleted."
+      ]
+  t.same(warnings, expect)
+  t.end()
+})
+
 tap.test("urls required", function(t) {
   var warnings = []
   function warn(w) {
@@ -180,7 +204,7 @@ tap.test("deprecation warning for array in dependencies fields", function(t) {
     dependencies: [],
     devDependencies: [],
     optionalDependencies: []
-  }, warn)  
+  }, warn)
   t.ok(~warnings.indexOf("specifying dependencies as array is deprecated"), "deprecation warning")
   t.ok(~warnings.indexOf("specifying devDependencies as array is deprecated"), "deprecation warning")
   t.ok(~warnings.indexOf("specifying optionalDependencies as array is deprecated"), "deprecation warning")
