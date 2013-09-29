@@ -4,7 +4,7 @@ var path = require("path")
 
 var globals = Object.keys(global)
 
-var normalize = require("../lib/normalize")
+var normalize = require("../index")
 
 var rpjPath = path.resolve(__dirname,"./fixtures/read-package-json.json")
 tap.test("normalize some package data", function(t) {
