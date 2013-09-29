@@ -1,5 +1,5 @@
 var tap = require("tap")
-var normalize = require("../lib/normalize")
+var normalize = require("../index")
 var path = require("path")
 var fs = require("fs")
 var _ = require("underscore")
