@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "semver": "2",
-    "github-url-from-git": "~1.1.1"
+    "github-url-from-git": "~1.1.1",
+    "github-url-from-username-repo": "0.0.2"
   },
   "devDependencies": {
     "tap": "~0.2.5",
