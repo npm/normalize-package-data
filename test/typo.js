@@ -1,33 +1,39 @@
 var test = require('tap').test
+
+var format = require("util").format
+
 var normalize = require('../')
 var typos = require('../lib/typos.json')
+var wmessages = require("../lib/warning_messages.json")
 
 test('typos', function(t) {
   var warnings = []
   function warn(m) {
     warnings.push(m)
   }
+  
+  var typoMessage = format.bind(undefined, wmessages.typo)
 
   var expect =
-    [ 'No repository field.',
-      'dependancies should probably be dependencies.',
-      'dependecies should probably be dependencies.',
-      'depdenencies should probably be dependencies.',
-      'devEependencies should probably be devDependencies.',
-      'depends should probably be dependencies.',
-      'dev-dependencies should probably be devDependencies.',
-      'devDependences should probably be devDependencies.',
-      'devDepenencies should probably be devDependencies.',
-      'devdependencies should probably be devDependencies.',
-      'repostitory should probably be repository.',
-      'repo should probably be repository.',
-      'prefereGlobal should probably be preferGlobal.',
-      'hompage should probably be homepage.',
-      'hampage should probably be homepage.',
-      'autohr should probably be author.',
-      'autor should probably be author.',
-      'contributers should probably be contributors.',
-      'publicationConfig should probably be publishConfig.' ]
+    [ wmessages.missingRepository,
+      typoMessage('dependancies', 'dependencies'),
+      typoMessage('dependecies', 'dependencies'),
+      typoMessage('depdenencies', 'dependencies'),
+      typoMessage('devEependencies', 'devDependencies'),
+      typoMessage('depends', 'dependencies'),
+      typoMessage('dev-dependencies', 'devDependencies'),
+      typoMessage('devDependences', 'devDependencies'),
+      typoMessage('devDepenencies', 'devDependencies'),
+      typoMessage('devdependencies', 'devDependencies'),
+      typoMessage('repostitory', 'repository'),
+      typoMessage('repo', 'repository'),
+      typoMessage('prefereGlobal', 'preferGlobal'),
+      typoMessage('hompage', 'homepage'),
+      typoMessage('hampage', 'homepage'),
+      typoMessage('autohr', 'author'),
+      typoMessage('autor', 'author'),
+      typoMessage('contributers', 'contributors'),
+      typoMessage('publicationConfig', 'publishConfig') ]
 
   normalize({"dependancies": "dependencies"
             ,"dependecies": "dependencies"
@@ -55,13 +61,13 @@ test('typos', function(t) {
 
   warnings.length = 0
   var expect =
-    [ 'No description',
-      'No repository field.',
-      'bugs[\'web\'] should probably be bugs[\'url\'].',
-      'bugs[\'name\'] should probably be bugs[\'url\'].',
-      'bugs.url field must be a string url. Deleted.',
-      'Normalized value of bugs field is an empty object. Deleted.',
-      "No README data" ]
+    [ wmessages.missingDescription,
+      wmessages.missingRepository,
+      typoMessage("bugs['web']", "bugs['url']"),
+      typoMessage("bugs['name']", "bugs['url']"),
+      wmessages.nonUrlBugsUrlField,
+      wmessages.emptyNormalizedBugs,
+      wmessages.missingReadme ]
 
   normalize({name:"name"
             ,version:"1.2.5"
@@ -71,10 +77,10 @@ test('typos', function(t) {
 
   warnings.length = 0
   var expect =
-    [ 'No description',
-      'No repository field.',
-      "No README data",
-      'script should probably be scripts.' ]
+    [ wmessages.missingDescription,
+      wmessages.missingRepository,
+      wmessages.missingReadme,
+      typoMessage('script', 'scripts') ]
 
   normalize({name:"name"
             ,version:"1.2.5"
@@ -84,11 +90,11 @@ test('typos', function(t) {
 
   warnings.length = 0
   expect =
-    [ 'No description',
-      'No repository field.',
-      'scripts[\'server\'] should probably be scripts[\'start\'].',
-      'scripts[\'tests\'] should probably be scripts[\'test\'].',
-      "No README data" ]
+    [ wmessages.missingDescription,
+      wmessages.missingRepository,
+      typoMessage("scripts['server']", "scripts['start']"),
+      typoMessage("scripts['tests']", "scripts['test']"),
+      wmessages.missingReadme ]
 
   normalize({name:"name"
             ,version:"1.2.5"
