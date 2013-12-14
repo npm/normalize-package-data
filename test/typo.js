@@ -1,10 +1,9 @@
 var test = require('tap').test
 
-var format = require("util").format
-
 var normalize = require('../')
 var typos = require('../lib/typos.json')
-var wmessages = require("../lib/warning_messages.json")
+var warningMessages = require("../lib/warning_messages.json")
+var safeFormat = require("../lib/safe_format")
 
 test('typos', function(t) {
   var warnings = []
@@ -12,10 +11,10 @@ test('typos', function(t) {
     warnings.push(m)
   }
   
-  var typoMessage = format.bind(undefined, wmessages.typo)
+  var typoMessage = safeFormat.bind(undefined, warningMessages.typo)
 
   var expect =
-    [ wmessages.missingRepository,
+    [ warningMessages.missingRepository,
       typoMessage('dependancies', 'dependencies'),
       typoMessage('dependecies', 'dependencies'),
       typoMessage('depdenencies', 'dependencies'),
@@ -61,13 +60,13 @@ test('typos', function(t) {
 
   warnings.length = 0
   var expect =
-    [ wmessages.missingDescription,
-      wmessages.missingRepository,
+    [ warningMessages.missingDescription,
+      warningMessages.missingRepository,
       typoMessage("bugs['web']", "bugs['url']"),
       typoMessage("bugs['name']", "bugs['url']"),
-      wmessages.nonUrlBugsUrlField,
-      wmessages.emptyNormalizedBugs,
-      wmessages.missingReadme ]
+      warningMessages.nonUrlBugsUrlField,
+      warningMessages.emptyNormalizedBugs,
+      warningMessages.missingReadme ]
 
   normalize({name:"name"
             ,version:"1.2.5"
@@ -77,9 +76,9 @@ test('typos', function(t) {
 
   warnings.length = 0
   var expect =
-    [ wmessages.missingDescription,
-      wmessages.missingRepository,
-      wmessages.missingReadme,
+    [ warningMessages.missingDescription,
+      warningMessages.missingRepository,
+      warningMessages.missingReadme,
       typoMessage('script', 'scripts') ]
 
   normalize({name:"name"
@@ -90,11 +89,11 @@ test('typos', function(t) {
 
   warnings.length = 0
   expect =
-    [ wmessages.missingDescription,
-      wmessages.missingRepository,
+    [ warningMessages.missingDescription,
+      warningMessages.missingRepository,
       typoMessage("scripts['server']", "scripts['start']"),
       typoMessage("scripts['tests']", "scripts['test']"),
-      wmessages.missingReadme ]
+      warningMessages.missingReadme ]
 
   normalize({name:"name"
             ,version:"1.2.5"

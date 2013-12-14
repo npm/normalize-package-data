@@ -2,12 +2,11 @@ var tap = require("tap")
 var fs = require("fs")
 var path = require("path")
 
-var format = require("util").format
-
 var globals = Object.keys(global)
 
 var normalize = require("../lib/normalize")
-var wmessages = require("../lib/warning_messages.json")
+var warningMessages = require("../lib/warning_messages.json")
+var safeFormat = require("../lib/safe_format")
 
 var rpjPath = path.resolve(__dirname,"./fixtures/read-package-json.json")
 tap.test("normalize some package data", function(t) {
@@ -51,9 +50,9 @@ tap.test("empty object", function(t) {
   normalize(packageData, warn)
   t.same(packageData, expect)
   t.same(warnings, [
-    wmessages.missingDescription,
-    wmessages.missingRepository,
-    wmessages.missingReadme
+    warningMessages.missingDescription,
+    warningMessages.missingRepository,
+    warningMessages.missingReadme
   ])
   t.end()
 })
@@ -73,10 +72,10 @@ tap.test("core module name", function(t) {
   }, warn)
 
   var expect = [
-      format(wmessages.conflictingName, 'http'),
-      wmessages.nonEmailUrlBugsString,
-      wmessages.emptyNormalizedBugs,
-      wmessages.nonUrlHomepage
+      safeFormat(warningMessages.conflictingName, 'http'),
+      warningMessages.nonEmailUrlBugsString,
+      warningMessages.emptyNormalizedBugs,
+      warningMessages.nonUrlHomepage
       ]
   t.same(warnings, expect)
   t.end()
@@ -104,15 +103,15 @@ tap.test("urls required", function(t) {
   console.error(a)
 
   var expect =
-    [ wmessages.missingDescription,
-      wmessages.missingRepository,
-      wmessages.nonUrlBugsUrlField,
-      wmessages.nonEmailBugsEmailField,
-      wmessages.emptyNormalizedBugs,
-      wmessages.missingReadme,
-      wmessages.nonEmailUrlBugsString,
-      wmessages.emptyNormalizedBugs,
-      wmessages.nonUrlHomepage ]
+    [ warningMessages.missingDescription,
+      warningMessages.missingRepository,
+      warningMessages.nonUrlBugsUrlField,
+      warningMessages.nonEmailBugsEmailField,
+      warningMessages.emptyNormalizedBugs,
+      warningMessages.missingReadme,
+      warningMessages.nonEmailUrlBugsString,
+      warningMessages.emptyNormalizedBugs,
+      warningMessages.nonUrlHomepage ]
   t.same(warnings, expect)
   t.end()
 })
@@ -130,10 +129,10 @@ tap.test("homepage field must start with a protocol.", function(t) {
   console.error(a)
 
   var expect =
-    [ wmessages.missingDescription,
-      wmessages.missingRepository,
-      wmessages.missingReadme,
-      wmessages.missingProtocolHomepage ]
+    [ warningMessages.missingDescription,
+      warningMessages.missingRepository,
+      warningMessages.missingReadme,
+      warningMessages.missingProtocolHomepage ]
   t.same(warnings, expect)
   t.same(a.homepage, 'http://example.org')
   t.end()
@@ -208,9 +207,9 @@ tap.test("deprecation warning for array in dependencies fields", function(t) {
     devDependencies: [],
     optionalDependencies: []
   }, warn)
-  t.ok(~warnings.indexOf(format(wmessages.deprecatedArrayDependencies, 'dependencies')), "deprecation warning")
-  t.ok(~warnings.indexOf(format(wmessages.deprecatedArrayDependencies, 'devDependencies')), "deprecation warning")
-  t.ok(~warnings.indexOf(format(wmessages.deprecatedArrayDependencies, 'optionalDependencies')), "deprecation warning")
+  t.ok(~warnings.indexOf(safeFormat(warningMessages.deprecatedArrayDependencies, 'dependencies')), "deprecation warning")
+  t.ok(~warnings.indexOf(safeFormat(warningMessages.deprecatedArrayDependencies, 'devDependencies')), "deprecation warning")
+  t.ok(~warnings.indexOf(safeFormat(warningMessages.deprecatedArrayDependencies, 'optionalDependencies')), "deprecation warning")
   t.end()
 })
 

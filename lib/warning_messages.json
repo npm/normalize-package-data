@@ -1,7 +1,7 @@
 {
   "repositories": "'repositories' (plural) Not supported. Please pick one as the 'repository' field"
   ,"missingRepository": "No repository field."
-  ,"borkenGitUrl": "Probably broken git url: %s"
+  ,"brokenGitUrl": "Probably broken git url: %s"
   ,"nonObjectScripts": "scripts must be an object"
   ,"nonStringScript": "script values must be string commands"
   ,"nonArrayFiles": "Invalid 'files' member"
