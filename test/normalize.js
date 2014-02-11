@@ -196,6 +196,13 @@ tap.test("homepage field will set to github gist url if repository is a shorthan
   t.end()
 })
 
+tap.test("treat isaacs/node-graceful-fs as github repo in dependencies", function(t) {
+  var d = {dependencies: {"node-graceful-fs": "isaacs/node-graceful-fs"}}
+  normalize(d)
+  t.same(d.dependencies, {"node-graceful-fs": "git://github.com/isaacs/node-graceful-fs" })
+  t.end()
+});
+
 tap.test("deprecation warning for array in dependencies fields", function(t) {
   var a
   var warnings = []
