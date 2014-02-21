@@ -24,3 +24,20 @@ tap.test("warn if dependency contains anything else but a string", function(t) {
   t.ok(~warnings.indexOf(wanted3), wanted3)
   t.end()
 })
+
+tap.test("warn if bundleDependencies array contains anything else but strings", function(t) {
+  var a
+  var warnings = []
+  function warn(w) {
+    warnings.push(w)
+  }
+  normalize(a={
+    bundleDependencies: ["abc", 123, {foo:"bar"}]
+  }, warn)
+  
+  var wanted1 = safeFormat(warningMessages.nonStringBundleDependency, 123)
+  var wanted2 = safeFormat(warningMessages.nonStringBundleDependency, {foo:"bar"})
+  t.ok(~warnings.indexOf(wanted1), wanted1)
+  t.ok(~warnings.indexOf(wanted2), wanted2)
+  t.end()
+})
