@@ -1,4 +1,4 @@
-# normalize-package-data [![Build Status](https://travis-ci.org/meryn/normalize-package-data.png?branch=master)](https://travis-ci.org/meryn/normalize-package-data)
+# normalize-package-data [![Build Status](https://travis-ci.org/npm/normalize-package-data.png?branch=master)](https://travis-ci.org/npm/normalize-package-data)
 
 normalize-package data exports a function that normalizes package metadata. This data is typically found in a package.json file, but in principle could come from any source - for example the npm registry.
 
