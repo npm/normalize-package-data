@@ -14,7 +14,7 @@
   "dependencies": {
     "github-url-from-git": "~1.1.1",
     "github-url-from-username-repo": "^0.2.0",
-    "semver": "2"
+    "semver": "2 || 3"
   },
   "devDependencies": {
     "tap": "~0.2.5",
