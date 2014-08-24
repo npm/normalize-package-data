@@ -20,5 +20,9 @@
     "tap": "~0.2.5",
     "underscore": "~1.4.4",
     "async": "~0.2.7"
+  },
+  "bin": {
+    "npd": "./bin/npd.js",
+    "normalize-package-data": "./bin/npd.js"
   }
 }
