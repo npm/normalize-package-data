@@ -7,6 +7,13 @@ var pkg = "";
 
 process.stdin.setEncoding('utf8');
 
+if (process.stdin.isTTY) {
+  console.log("\nUsage");
+  console.log("$ cat package.json | normalize-package-data");
+  console.log("$ cat package.json | normalize-package-data > package.json\n");
+  process.exit();
+}
+
 process.stdin.on('readable', function() {
   var chunk = process.stdin.read();
   if (chunk !== null) pkg += chunk;
