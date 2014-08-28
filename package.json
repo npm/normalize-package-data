@@ -22,7 +22,6 @@
     "async": "~0.2.7"
   },
   "bin": {
-    "npd": "./bin/npd.js",
     "normalize-package-data": "./bin/npd.js"
   }
 }
