@@ -15,8 +15,8 @@ tap.test("normalize some package data", function(t) {
   normalize(packageData, function(warning) {
     warnings.push(warning)
   })
-  // there's no readme data in this particular object
-  t.equal( warnings.length, 1, "There's exactly one warning.")
+  // there's no readme or license data in this particular object
+  t.equal( warnings.length, 2, "There's exactly two warnings.")
   fs.readFile(rpjPath, function(err, data) {
     if(err) throw err
     // Various changes have been made
@@ -52,7 +52,8 @@ tap.test("empty object", function(t) {
   t.same(warnings, [
     warningMessages.missingDescription,
     warningMessages.missingRepository,
-    warningMessages.missingReadme
+    warningMessages.missingReadme,
+    warningMessages.missingLicense
   ])
   t.end()
 })
@@ -66,6 +67,7 @@ tap.test("core module name", function(t) {
   normalize(a={
     name: "http",
     readme: "read yourself how about",
+    license: "TEST",
     homepage: 123,
     bugs: "what is this i don't even",
     repository: "Hello."
@@ -95,6 +97,7 @@ tap.test("urls required", function(t) {
   var a
   normalize(a={
     readme: "read yourself how about",
+    license: "TEST",
     homepage: 123,
     bugs: "what is this i don't even",
     repository: "Hello."
@@ -109,6 +112,7 @@ tap.test("urls required", function(t) {
       warningMessages.nonEmailBugsEmailField,
       warningMessages.emptyNormalizedBugs,
       warningMessages.missingReadme,
+      warningMessages.missingLicense,
       warningMessages.nonEmailUrlBugsString,
       warningMessages.emptyNormalizedBugs,
       warningMessages.nonUrlHomepage ]
@@ -132,6 +136,7 @@ tap.test("homepage field must start with a protocol.", function(t) {
     [ warningMessages.missingDescription,
       warningMessages.missingRepository,
       warningMessages.missingReadme,
+      warningMessages.missingLicense,
       warningMessages.missingProtocolHomepage ]
   t.same(warnings, expect)
   t.same(a.homepage, 'http://example.org')
