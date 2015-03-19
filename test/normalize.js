@@ -196,10 +196,11 @@ tap.test("homepage field will set to github gist url if repository is a shorthan
   t.end()
 })
 
-tap.test("treat isaacs/node-graceful-fs as github repo in dependencies", function(t) {
+tap.test("don't treat isaacs/node-graceful-fs as GitHub repo in dependencies", function(t) {
+  t.comment("GitHub shorthand is handled by npm's cache, so normalization leaves it alone")
   var d = {dependencies: {"node-graceful-fs": "isaacs/node-graceful-fs"}}
   normalize(d)
-  t.same(d.dependencies, {"node-graceful-fs": "git+https://github.com/isaacs/node-graceful-fs" })
+  t.same(d.dependencies, {"node-graceful-fs": "isaacs/node-graceful-fs" })
   t.end()
 });
 
