@@ -19,6 +19,7 @@
   ,"nonStringDescription": "'description' field should be a string"
   ,"missingDescription": "No description"
   ,"missingReadme": "No README data"
+  ,"missingLicense": "No license information"
   ,"nonEmailUrlBugsString": "Bug string field must be url, email, or {email,url}"
   ,"nonUrlBugsUrlField": "bugs.url field must be a string url. Deleted."
   ,"nonEmailBugsEmailField": "bugs.email field must be a string email. Deleted."
