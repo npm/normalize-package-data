@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "hosted-git-info": "^2.0.2",
-    "semver": "2 || 3 || 4"
+    "semver": "2 || 3 || 4",
+    "spdx": "^0.4.0"
   },
   "devDependencies": {
     "tap": "~0.2.5",
