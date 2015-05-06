@@ -185,14 +185,14 @@ tap.test("singularize repositories", function(t) {
 tap.test("treat visionmedia/express as github repo", function(t) {
   var d = {repository: {type: "git", url: "visionmedia/express"}}
   normalize(d)
-  t.same(d.repository, { type: "git", url: "https://github.com/visionmedia/express.git" })
+  t.same(d.repository, { type: "git", url: "git+https://github.com/visionmedia/express.git" })
   t.end()
 });
 
 tap.test("treat isaacs/node-graceful-fs as github repo", function(t) {
   var d = {repository: {type: "git", url: "isaacs/node-graceful-fs"}}
   normalize(d)
-  t.same(d.repository, { type: "git", url: "https://github.com/isaacs/node-graceful-fs.git" })
+  t.same(d.repository, { type: "git", url: "git+https://github.com/isaacs/node-graceful-fs.git" })
   t.end()
 });
 
