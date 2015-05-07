@@ -7,16 +7,6 @@ test("strict", function(t) {
 
   try {
     threw = false
-    normalize({name: "X"}, true)
-  } catch (er) {
-    threw = true
-    t.equal(er.message, 'Invalid name: "X"')
-  } finally {
-    t.equal(threw, true)
-  }
-
-  try {
-    threw = false
     normalize({name:" x "}, true)
   } catch (er) {
     threw = true
