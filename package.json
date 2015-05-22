@@ -18,8 +18,8 @@
     "spdx": "^0.4.0"
   },
   "devDependencies": {
-    "tap": "~0.2.5",
-    "underscore": "~1.4.4",
-    "async": "~0.9.0"
+    "async": "~0.9.0",
+    "tap": "^1.1.0",
+    "underscore": "~1.4.4"
   }
 }
