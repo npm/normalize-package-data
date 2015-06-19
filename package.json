@@ -15,7 +15,7 @@
   "dependencies": {
     "hosted-git-info": "^2.0.2",
     "semver": "2 || 3 || 4",
-    "spdx": "^0.4.0"
+    "validate-npm-package-license": "^2.0.0"
   },
   "devDependencies": {
     "async": "~0.9.0",
