@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "hosted-git-info": "^2.0.2",
-    "semver": "2 || 3 || 4",
+    "semver": "2 || 3 || 4 || 5",
     "validate-npm-package-license": "^2.0.0"
   },
   "devDependencies": {
