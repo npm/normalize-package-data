@@ -19,8 +19,8 @@
     "validate-npm-package-license": "^3.0.1"
   },
   "devDependencies": {
-    "underscore": "~1.4.4"
     "async": "^1.5.0",
     "tap": "^2.2.0",
+    "underscore": "^1.8.3"
   }
 }
