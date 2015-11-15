@@ -135,7 +135,6 @@ tap.test("homepage field must start with a protocol.", function(t) {
     [ warningMessages.missingDescription,
       warningMessages.missingRepository,
       warningMessages.missingReadme,
-      warningMessages.missingProtocolHomepage,
       warningMessages.missingLicense]
   t.same(warnings, expect)
   t.same(a.homepage, 'http://example.org')
