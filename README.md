@@ -64,7 +64,7 @@ If the supplied data has an invalid name or version vield, `normalizeData` will 
 * If `bin` field is a string, then `bin` field will become an object with `name` set to the value of the `name` field, and `bin` set to the original string value.
 * If `man` field is a string, it will become an array with the original string as its sole member.
 * If `keywords` field is string, it is considered to be a list of keywords separated by one or more white-space characters. It gets converted to an array by splitting on `\s+`.
-* All people fields (`author`, `maintainers`, `contributors`) get converted into objects with name, email and url properties.
+* All people fields (`author`, `maintainers`, `contributors`) get converted into objects with name, email, url, and for properties.
 * If `bundledDependencies` field (a typo) exists and `bundleDependencies` field does not, `bundledDependencies` will get renamed to `bundleDependencies`.
 * If the value of any of the dependencies fields  (`dependencies`, `devDependencies`, `optionalDependencies`) is a string, it gets converted into an object with familiar `name=>value` pairs.
 * The values in `optionalDependencies` get added to `dependencies`. The `optionalDependencies` array is left untouched.
