@@ -28,7 +28,6 @@ You may activate strict validation by passing true as the second argument.
 ```javascript
 normalizeData = require('normalize-package-data')
 packageData = require("./package.json")
-warnFn = function(msg) { console.error(msg) }
 normalizeData(packageData, true)
 // packageData is now normalized
 ```
