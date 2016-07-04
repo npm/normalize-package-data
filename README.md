@@ -1,6 +1,6 @@
 # normalize-package-data [![Build Status](https://travis-ci.org/npm/normalize-package-data.png?branch=master)](https://travis-ci.org/npm/normalize-package-data)
 
-normalize-package data exports a function that normalizes package metadata. This data is typically found in a package.json file, but in principle could come from any source - for example the npm registry.
+normalize-package-data exports a function that normalizes package metadata. This data is typically found in a package.json file, but in principle could come from any source - for example the npm registry.
 
 normalize-package-data is used by [read-package-json](https://npmjs.org/package/read-package-json) to normalize the data it reads from a package.json file. In turn, read-package-json is used by [npm](https://npmjs.org/package/npm) and various npm-related tools.
 
@@ -86,7 +86,7 @@ If `name` field is given, the value of the name field must be a string. The stri
 
 * start with a period.
 * contain the following characters: `/@\s+%`
-* contain and characters that would need to be encoded for use in urls.
+* contain any characters that would need to be encoded for use in urls.
 * resemble the word `node_modules` or `favicon.ico` (case doesn't matter).
 
 ### Rules for version field
