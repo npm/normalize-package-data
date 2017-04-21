@@ -25,6 +25,7 @@
   },
   "files": [
     "lib/*.js",
+    "lib/*.json",
     "AUTHORS"
   ]
 }
