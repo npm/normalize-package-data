@@ -156,6 +156,25 @@ tap.test("license field should be a valid SPDX expression", function(t) {
   t.end()
 })
 
+tap.test("don't fail when license is just a space", function(t) {
+  var warnings = []
+  function warn(w) {
+    warnings.push(w)
+  }
+  var a
+  normalize(a={
+    license: ' '
+  }, warn)
+
+  var expect =
+    [ warningMessages.missingDescription,
+      warningMessages.missingRepository,
+      warningMessages.missingReadme,
+      warningMessages.invalidLicense]
+  t.same(warnings, expect)
+  t.end()
+})
+
 tap.test("gist bugs url", function(t) {
   var d = {
     repository: "git@gist.github.com:123456.git"
