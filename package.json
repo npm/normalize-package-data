@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "hosted-git-info": "^2.1.4",
-    "is-builtin-module": "^1.0.0",
+    "is-builtin-module": "^3.0.0",
     "semver": "2 || 3 || 4 || 5",
     "validate-npm-package-license": "^3.0.1"
   },
