@@ -62,22 +62,26 @@ tap.test("core module name", function(t) {
   function warn(m) {
     warnings.push(m)
   }
+  var coreModules = ["http", "_stream_writable"]
   var a
-  normalize(a={
-    name: "http",
-    readme: "read yourself how about",
-    homepage: 123,
-    bugs: "what is this i don't even",
-    repository: "Hello."
-  }, warn)
+  var expect = []
+  for (var i = 0; i < coreModules.length; ++i) {
+    normalize(a={
+      name: coreModules[i],
+      readme: "read yourself how about",
+      homepage: 123,
+      bugs: "what is this i don't even",
+      repository: "Hello."
+    }, warn)
 
-  var expect = [
-      safeFormat(warningMessages.conflictingName, 'http'),
+    expect = expect.concat([
+      safeFormat(warningMessages.conflictingName, coreModules[i]),
       warningMessages.nonEmailUrlBugsString,
       warningMessages.emptyNormalizedBugs,
       warningMessages.nonUrlHomepage,
       warningMessages.missingLicense
-      ]
+    ])
+  }
   t.same(warnings, expect)
   t.end()
 })
