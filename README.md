@@ -98,7 +98,7 @@ The `license` field should be a valid *SPDX license expression* or one of the sp
 
 ## Credits
 
-This package contains code based on read-package-json written by Isaac Z. Schlueter. Used with permisson.
+This package contains code based on read-package-json written by Isaac Z. Schlueter. Used with permission.
 
 ## License
 
