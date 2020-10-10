@@ -1,35 +1,25 @@
-var tap = require("tap")
-var normalize = require("../lib/normalize")
-var path = require("path")
-var fs = require("fs")
-var async = require("async")
+const t = require("tap")
+const normalize = require("../lib/normalize")
+const fs = require("fs")
+const { promisify } = require("util")
+const readFile = promisify(fs.readFile)
+const readdir = promisify(fs.readdir)
 
-var data, clonedData
-var warn
 
-tap.test("consistent normalization", function(t) {
-  path.resolve(__dirname, "./fixtures/read-package-json.json")
-  fs.readdir (__dirname + "/fixtures", function (err, entries) {
-    // entries = ['coffee-script.json'] // uncomment to limit to a specific file
-    verifyConsistency = function(entryName, next) {
-      warn = function(msg) {
-        // t.equal("",msg) // uncomment to have some kind of logging of warnings
-      }
-      filename = __dirname + "/fixtures/" + entryName
-      fs.readFile(filename, function(err, contents) {
-        if (err) return next(err)
-        data = JSON.parse(contents.toString())
-        normalize(data, warn)
-        clonedData = { ...data }
-        normalize(data, warn)
-        t.deepEqual(clonedData, data,
-          "Normalization of " + entryName + " is consistent.")
-        next(null)
-      }) // fs.readFile
-    } // verifyConsistency
-    async.forEach(entries, verifyConsistency, function(err) {
-      if (err) throw err
-      t.end()
-    })
-  }) // fs.readdir
-}) // tap.test
+t.test("consistent normalization", async t => {
+  const entries = await readdir(__dirname + "/fixtures")
+  const verifyConsistency = async (entryName) => {
+    const warn = () => null
+    const filename = __dirname + "/fixtures/" + entryName
+    const contents = await readFile(filename)
+
+    const data = JSON.parse(contents.toString())
+    normalize(data, warn)
+    const clonedData = { ...data }
+    normalize(data, warn)
+    t.deepEqual(clonedData, data,
+      "Normalization of " + entryName + " is consistent.")
+  }
+
+  return Promise.all(entries.map(i => verifyConsistency(i)))
+})

@@ -19,7 +19,6 @@
     "validate-npm-package-license": "^3.0.1"
   },
   "devDependencies": {
-    "async": "^2.6.1",
     "tap": "^14.10.8"
   },
   "files": [
