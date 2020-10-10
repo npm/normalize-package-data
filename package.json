@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "async": "^2.6.1",
-    "tap": "^12.4.0"
+    "tap": "^14.10.8"
   },
   "files": [
     "lib/*.js",
