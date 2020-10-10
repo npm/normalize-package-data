@@ -2,7 +2,6 @@ var tap = require("tap")
 var normalize = require("../lib/normalize")
 var path = require("path")
 var fs = require("fs")
-var _ = require("underscore")
 var async = require("async")
 
 var data, clonedData
@@ -21,7 +20,7 @@ tap.test("consistent normalization", function(t) {
         if (err) return next(err)
         data = JSON.parse(contents.toString())
         normalize(data, warn)
-        clonedData = _.clone(data)
+        clonedData = { ...data }
         normalize(data, warn)
         t.deepEqual(clonedData, data,
           "Normalization of " + entryName + " is consistent.")
