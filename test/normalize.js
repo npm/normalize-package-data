@@ -181,18 +181,18 @@ tap.test("don't fail when license is just a space", function(t) {
 
 tap.test("gist bugs url", function(t) {
   var d = {
-    repository: "git@gist.github.com:123456.git"
+    repository: "git@gist.github.com:1234567.git"
   }
   normalize(d)
-  t.same(d.repository, { type: 'git', url: 'git+ssh://git@gist.github.com/123456.git' })
-  t.same(d.bugs, { url: 'https://gist.github.com/123456' })
+  t.same(d.repository, { type: 'git', url: 'git+ssh://git@gist.github.com/1234567.git' })
+  t.same(d.bugs, { url: 'https://gist.github.com/1234567' })
   t.end();
 });
 
 tap.test("singularize repositories", function(t) {
-  var d = {repositories:["git@gist.github.com:123456.git"]}
+  var d = {repositories:["git@gist.github.com:1234567.git"]}
   normalize(d)
-  t.same(d.repository, { type: 'git', url: 'git+ssh://git@gist.github.com/123456.git' })
+  t.same(d.repository, { type: 'git', url: 'git+ssh://git@gist.github.com/1234567.git' })
   t.end()
 });
 
@@ -222,9 +222,9 @@ tap.test("homepage field will set to github url if repository is a github repo",
 tap.test("homepage field will set to github gist url if repository is a gist", function(t) {
   var a
   normalize(a={
-    repository: { type: "git", url: "git@gist.github.com:123456.git" }
+    repository: { type: "git", url: "git@gist.github.com:1234567.git" }
   })
-  t.same(a.homepage, 'https://gist.github.com/123456')
+  t.same(a.homepage, 'https://gist.github.com/1234567')
   t.end()
 })
 
