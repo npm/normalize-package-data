@@ -25,5 +25,8 @@
     "lib/*.js",
     "lib/*.json",
     "AUTHORS"
-  ]
+  ],
+  "engines": {
+    "node": ">=10"
+  }
 }
