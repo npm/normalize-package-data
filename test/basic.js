@@ -26,7 +26,7 @@ function verifyFields (t, normalized, original) {
   // optional deps are folded in.
   t.deepEqual(normalized.optionalDependencies,
               original.optionalDependencies)
-  t.has(normalized.dependencies, original.optionalDependencies, "opt depedencies are copied into dependencies")
+  t.doesNotHave(normalized.dependencies, original.optionalDependencies, "opt depedencies are not copied into dependencies")
   t.has(normalized.dependencies, original.dependencies, "regular depedencies stay in place")
   t.deepEqual(normalized.devDependencies, original.devDependencies)
   t.type(normalized.bugs, "object", "bugs should become object")
