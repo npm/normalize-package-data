@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "hosted-git-info": "^3.0.6",
-    "resolve": "^1.17.0",
+    "is-core-module": "^2.1.0",
     "semver": "^7.3.2",
     "validate-npm-package-license": "^3.0.1"
   },
