@@ -10,7 +10,6 @@
   },
   "main": "lib/normalize.js",
   "scripts": {
-    "posttest": "standard",
     "postversion": "npm publish",
     "prepublishOnly": "git push origin --follow-tags",
     "preversion": "npm test",
