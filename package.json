@@ -22,7 +22,7 @@
     "validate-npm-package-license": "^3.0.1"
   },
   "devDependencies": {
-    "tap": "^14.10.8"
+    "tap": "^14.11.0"
   },
   "files": [
     "lib/*.js",
