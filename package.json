@@ -16,7 +16,7 @@
     "test": "tap test/*.js"
   },
   "dependencies": {
-    "hosted-git-info": "^4.0.0",
+    "hosted-git-info": "^4.0.1",
     "resolve": "^1.20.0",
     "semver": "^7.3.4",
     "validate-npm-package-license": "^3.0.1"
