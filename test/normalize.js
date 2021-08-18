@@ -178,6 +178,22 @@ tap.test("don't fail when license is just a space", function (t) {
   t.end()
 })
 
+tap.test("don't fail when license is licence", function (t) {
+  var warnings = []
+  function warn (w) {
+    warnings.push(w)
+  }
+  normalize({
+    description: 'description',
+    readme: 'readme',
+    repository: 'https://npmjs.org',
+    licence: 'MIT',
+  }, warn)
+
+  t.same(warnings, [])
+  t.end()
+})
+
 tap.test('gist bugs url', function (t) {
   var d = {
     repository: 'git@gist.github.com:1234567.git',
