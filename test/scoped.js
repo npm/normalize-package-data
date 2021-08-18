@@ -54,6 +54,6 @@ test("'@/package' is not a valid name", function (t) {
 test("name='@org/package', bin='bin.js' is bin={package:'bin.js'}", function (t) {
   var obj = {name : "@org/package", bin: "bin.js"}
   fixBinField(obj)
-  t.isDeeply(obj.bin, {package: 'bin.js'})
+  t.strictSame(obj.bin, {package: 'bin.js'})
   t.end()
 })

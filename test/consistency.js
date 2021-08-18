@@ -17,7 +17,7 @@ t.test("consistent normalization", async t => {
     normalize(data, warn)
     const clonedData = { ...data }
     normalize(data, warn)
-    t.deepEqual(clonedData, data,
+    t.same(clonedData, data,
       "Normalization of " + entryName + " is consistent.")
   }
 

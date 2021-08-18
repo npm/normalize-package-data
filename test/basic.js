@@ -21,14 +21,14 @@ function verifyFields (t, normalized, original) {
   t.equal(normalized._id, normalized.name + "@" + normalized.version, "It gets good id.")
   t.equal(normalized.name, original.name, "Name stays the same.")
   t.type(normalized.author, "object", "author field becomes object")
-  t.deepEqual(normalized.scripts, original.scripts, "scripts field (object) stays same")
+  t.same(normalized.scripts, original.scripts, "scripts field (object) stays same")
   t.equal(normalized.main, original.main)
   // optional deps are folded in.
-  t.deepEqual(normalized.optionalDependencies,
+  t.same(normalized.optionalDependencies,
               original.optionalDependencies)
   t.has(normalized.dependencies, original.optionalDependencies, "opt depedencies are copied into dependencies")
   t.has(normalized.dependencies, original.dependencies, "regular depedencies stay in place")
-  t.deepEqual(normalized.devDependencies, original.devDependencies)
+  t.same(normalized.devDependencies, original.devDependencies)
   t.type(normalized.bugs, "object", "bugs should become object")
   t.equal(normalized.bugs.url, "https://github.com/isaacs/read-package-json/issues")
 }

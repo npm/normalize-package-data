@@ -19,7 +19,7 @@ tap.test("normalize some package data", function(t) {
   fs.readFile(rpjPath, function(err, data) {
     if(err) throw err
     // Various changes have been made
-    t.notEqual(packageData, JSON.parse(data), "Output is different from input.")
+    t.not(packageData, JSON.parse(data), "Output is different from input.")
     t.end()
   })
 })

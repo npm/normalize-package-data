@@ -13,7 +13,7 @@
     "postversion": "npm publish",
     "prepublishOnly": "git push origin --follow-tags",
     "preversion": "npm test",
-    "test": "tap test/*.js"
+    "test": "tap test/*.js --branches 85 --functions 90 --lines 85 --statements 85"
   },
   "dependencies": {
     "hosted-git-info": "^4.0.1",
@@ -22,7 +22,7 @@
     "validate-npm-package-license": "^3.0.1"
   },
   "devDependencies": {
-    "tap": "^14.11.0"
+    "tap": "^15.0.9"
   },
   "files": [
     "lib/*.js",
