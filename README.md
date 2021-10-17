@@ -54,7 +54,7 @@ When `private` field is set to `true`, warnings will be suppressed.
 
 ### Potential exceptions
 
-If the supplied data has an invalid name or version vield, `normalizeData` will throw an error. Depending on where you call `normalizeData`, you may want to catch these errors so can pass them to a callback.
+If the supplied data has an invalid name or version field, `normalizeData` will throw an error. Depending on where you call `normalizeData`, you may want to catch these errors so can pass them to a callback.
 
 ## What normalization (currently) entails
 
@@ -70,7 +70,7 @@ If the supplied data has an invalid name or version vield, `normalizeData` will 
 * If the value of any of the dependencies fields  (`dependencies`, `devDependencies`, `optionalDependencies`) is a string, it gets converted into an object with familiar `name=>value` pairs.
 * The values in `optionalDependencies` get added to `dependencies`. The `optionalDependencies` array is left untouched.
 * As of v2: Dependencies that point at known hosted git providers (currently: github, bitbucket, gitlab) will have their URLs canonicalized, but protocols will be preserved.
-* As of v2: Dependencies that use shortcuts for hosted git providers (`org/proj`, `github:org/proj`, `bitbucket:org/proj`, `gitlab:org/proj`, `gist:docid`) will have the shortcut left in place. (In the case of github, the `org/proj` form will be expanded to `github:org/proj`.) THIS MARKS A BREAKING CHANGE FROM V1, where the shorcut was previously expanded to a URL.
+* As of v2: Dependencies that use shortcuts for hosted git providers (`org/proj`, `github:org/proj`, `bitbucket:org/proj`, `gitlab:org/proj`, `gist:docid`) will have the shortcut left in place. (In the case of github, the `org/proj` form will be expanded to `github:org/proj`.) THIS MARKS A BREAKING CHANGE FROM V1, where the shortcut was previously expanded to a URL.
 * If `description` field does not exist, but `readme` field does, then (more or less) the first paragraph of text that's found in the readme is taken as value for `description`.
 * If `repository` field is a string, it will become an object with `url` set to the original string value, and `type` set to `"git"`.
 * If `repository.url` is not a valid url, but in the style of "[owner-name]/[repo-name]", `repository.url` will be set to git+https://github.com/[owner-name]/[repo-name].git
@@ -100,7 +100,7 @@ The `license`/`licence` field should be a valid *SPDX license expression* or one
 
 ## Credits
 
-This package contains code based on read-package-json written by Isaac Z. Schlueter. Used with permisson.
+This package contains code based on read-package-json written by Isaac Z. Schlueter. Used with permission.
 
 ## License
 
