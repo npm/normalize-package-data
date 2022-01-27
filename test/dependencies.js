@@ -32,12 +32,21 @@ tap.test('warn if bundleDependencies array contains anything else but strings', 
   normalize({
     bundleDependencies: ['abc', 123, { foo: 'bar' }],
   }, warn)
+  var pkg = {
+    dependencies: {
+      def: '^1.0.0',
+    },
+    bundleDependencies: ['abc', 'def', 123, { foo: 'bar' }],
+  }
+  normalize(pkg, warn)
 
   var wanted1 = safeFormat(warningMessages.nonStringBundleDependency, 123)
   var wanted2 = safeFormat(warningMessages.nonStringBundleDependency, { foo: 'bar' })
   var wanted3 = safeFormat(warningMessages.nonDependencyBundleDependency, 'abc')
   t.ok(~warnings.indexOf(wanted1), wanted1)
   t.ok(~warnings.indexOf(wanted2), wanted2)
-  t.notOk(~warnings.indexOf(wanted3), wanted3)
+  t.ok(~warnings.indexOf(wanted3), wanted3)
+  t.equal(pkg.dependencies.abc, '*', 'added bundled dep to dependencies with *')
+  t.equal(pkg.dependencies.def, '^1.0.0', 'left def dependency alone')
   t.end()
 })
