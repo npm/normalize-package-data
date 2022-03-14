@@ -7,7 +7,7 @@ test('strict', function (t) {
 
   try {
     threw = false
-    normalize({name: 'X'}, true)
+    normalize({ name: 'X' }, true)
   } catch (er) {
     threw = true
     t.equal(er.message, 'Invalid name: "X"')
@@ -17,7 +17,7 @@ test('strict', function (t) {
 
   try {
     threw = false
-    normalize({name: ' x '}, true)
+    normalize({ name: ' x ' }, true)
   } catch (er) {
     threw = true
     t.equal(er.message, 'Invalid name: " x "')
@@ -27,7 +27,7 @@ test('strict', function (t) {
 
   try {
     threw = false
-    normalize({name: 'x', version: '01.02.03'}, true)
+    normalize({ name: 'x', version: '01.02.03' }, true)
   } catch (er) {
     threw = true
     t.equal(er.message, 'Invalid version: "01.02.03"')
@@ -36,12 +36,12 @@ test('strict', function (t) {
   }
 
   // these should not throw
-  var slob = {name: ' X ',
+  var slob = { name: ' X ',
     version: '01.02.03',
     dependencies: {
       y: '>01.02.03',
       z: '! 99 $$ASFJ(Aawenf90awenf as;naw.3j3qnraw || an elephant',
-    }}
+    } }
   normalize(slob, false)
   t.same(slob,
     { name: 'X',

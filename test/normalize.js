@@ -205,21 +205,21 @@ tap.test('gist bugs url', function (t) {
 })
 
 tap.test('singularize repositories', function (t) {
-  var d = {repositories: ['git@gist.github.com:1234567.git']}
+  var d = { repositories: ['git@gist.github.com:1234567.git'] }
   normalize(d)
   t.same(d.repository, { type: 'git', url: 'git+ssh://git@gist.github.com/1234567.git' })
   t.end()
 })
 
 tap.test('treat visionmedia/express as github repo', function (t) {
-  var d = {repository: {type: 'git', url: 'visionmedia/express'}}
+  var d = { repository: { type: 'git', url: 'visionmedia/express' } }
   normalize(d)
   t.same(d.repository, { type: 'git', url: 'git+https://github.com/visionmedia/express.git' })
   t.end()
 })
 
 tap.test('treat isaacs/node-graceful-fs as github repo', function (t) {
-  var d = {repository: {type: 'git', url: 'isaacs/node-graceful-fs'}}
+  var d = { repository: { type: 'git', url: 'isaacs/node-graceful-fs' } }
   normalize(d)
   t.same(d.repository, { type: 'git', url: 'git+https://github.com/isaacs/node-graceful-fs.git' })
   t.end()
@@ -243,6 +243,7 @@ tap.test('homepage field will set to github gist url if repository is a gist', f
   t.end()
 })
 
+/* eslint-disable-next-line max-len */
 tap.test('homepage field will set to github gist url if repository is a shorthand reference', function (t) {
   var a
   normalize(a = {
@@ -253,9 +254,9 @@ tap.test('homepage field will set to github gist url if repository is a shorthan
 })
 
 tap.test("don't mangle github shortcuts in dependencies", function (t) {
-  var d = {dependencies: {'node-graceful-fs': 'isaacs/node-graceful-fs'}}
+  var d = { dependencies: { 'node-graceful-fs': 'isaacs/node-graceful-fs' } }
   normalize(d)
-  t.same(d.dependencies, {'node-graceful-fs': 'github:isaacs/node-graceful-fs' })
+  t.same(d.dependencies, { 'node-graceful-fs': 'github:isaacs/node-graceful-fs' })
   t.end()
 })
 
@@ -269,8 +270,19 @@ tap.test('deprecation warning for array in dependencies fields', function (t) {
     devDependencies: [],
     optionalDependencies: [],
   }, warn)
-  t.ok(~warnings.indexOf(safeFormat(warningMessages.deprecatedArrayDependencies, 'dependencies')), 'deprecation warning')
-  t.ok(~warnings.indexOf(safeFormat(warningMessages.deprecatedArrayDependencies, 'devDependencies')), 'deprecation warning')
-  t.ok(~warnings.indexOf(safeFormat(warningMessages.deprecatedArrayDependencies, 'optionalDependencies')), 'deprecation warning')
+  t.ok(
+    ~warnings.indexOf(safeFormat(warningMessages.deprecatedArrayDependencies, 'dependencies')),
+    'deprecation warning'
+  )
+  t.ok(
+    ~warnings.indexOf(safeFormat(warningMessages.deprecatedArrayDependencies, 'devDependencies')),
+    'deprecation warning'
+  )
+  t.ok(
+    ~warnings.indexOf(
+      safeFormat(warningMessages.deprecatedArrayDependencies, 'optionalDependencies')
+    ),
+    'deprecation warning'
+  )
   t.end()
 })
