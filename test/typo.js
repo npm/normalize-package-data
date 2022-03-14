@@ -34,7 +34,7 @@ test('typos', function (t) {
       typoMessage('contributers', 'contributors'),
       typoMessage('publicationConfig', 'publishConfig')]
 
-  normalize({dependancies: 'dependencies',
+  normalize({ dependancies: 'dependencies',
     dependecies: 'dependencies',
     depdenencies: 'dependencies',
     devEependencies: 'devDependencies',
@@ -54,7 +54,7 @@ test('typos', function (t) {
     publicationConfig: 'publishConfig',
     readme: 'asdf',
     name: 'name',
-    version: '1.2.5'}, warn)
+    version: '1.2.5' }, warn)
 
   t.same(warnings, expect)
 
@@ -69,9 +69,9 @@ test('typos', function (t) {
       warningMessages.missingReadme,
       warningMessages.missingLicense]
 
-  normalize({name: 'name',
+  normalize({ name: 'name',
     version: '1.2.5',
-    bugs: {web: 'url', name: 'url'}}, warn)
+    bugs: { web: 'url', name: 'url' } }, warn)
 
   t.same(warnings, expect)
 
@@ -83,9 +83,9 @@ test('typos', function (t) {
       warningMessages.missingLicense,
       typoMessage('script', 'scripts')]
 
-  normalize({name: 'name',
+  normalize({ name: 'name',
     version: '1.2.5',
-    script: {server: 'start', tests: 'test'}}, warn)
+    script: { server: 'start', tests: 'test' } }, warn)
 
   t.same(warnings, expect)
 
@@ -98,9 +98,9 @@ test('typos', function (t) {
       warningMessages.missingReadme,
       warningMessages.missingLicense]
 
-  normalize({name: 'name',
+  normalize({ name: 'name',
     version: '1.2.5',
-    scripts: {server: 'start', tests: 'test'}}, warn)
+    scripts: { server: 'start', tests: 'test' } }, warn)
 
   t.same(warnings, expect)
 
@@ -111,22 +111,22 @@ test('typos', function (t) {
       warningMessages.missingReadme,
       warningMessages.missingLicense]
 
-  normalize({name: 'name',
+  normalize({ name: 'name',
     version: '1.2.5',
-    scripts: {server: 'start',
+    scripts: { server: 'start',
       tests: 'test',
       start: 'start',
-      test: 'test'}}, warn)
+      test: 'test' } }, warn)
 
   t.same(warnings, expect)
 
   warnings.length = 0
   expect = []
 
-  normalize({private: true,
+  normalize({ private: true,
     name: 'name',
     version: '1.2.5',
-    scripts: {server: 'start', tests: 'test'}}, warn)
+    scripts: { server: 'start', tests: 'test' } }, warn)
 
   t.same(warnings, expect)
 
