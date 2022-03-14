@@ -42,5 +42,11 @@
   },
   "templateOSS": {
     "version": "2.9.2"
+  },
+  "tap": {
+    "branches": 86,
+    "functions": 92,
+    "lines": 86,
+    "statements": 86
   }
 }
