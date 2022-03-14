@@ -1,6 +1,6 @@
 {
   "name": "normalize-package-data",
-  "version": "3.0.3",
+  "version": "4.0.0",
   "author": "GitHub Inc.",
   "description": "Normalizes data that can be found in package.json files.",
   "license": "BSD-2-Clause",
