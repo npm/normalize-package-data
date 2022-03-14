@@ -1,7 +1,7 @@
 {
   "name": "normalize-package-data",
   "version": "3.0.3",
-  "author": "Meryn Stol <merynstol@gmail.com>",
+  "author": "GitHub Inc.",
   "description": "Normalizes data that can be found in package.json files.",
   "license": "BSD-2-Clause",
   "repository": {
@@ -13,12 +13,15 @@
     "postversion": "npm publish",
     "prepublishOnly": "git push origin --follow-tags",
     "preversion": "npm test",
-    "test": "tap test/*.js --branches 85 --functions 90 --lines 85 --statements 85",
+    "test": "tap",
     "npmclilint": "npmcli-lint",
-    "lint": "npm run npmclilint -- \"lib/**/*.*js\" \"test/**/*.*js\"",
+    "lint": "eslint '**/*.js'",
     "lintfix": "npm run lint -- --fix",
-    "posttest": "npm run lint --",
-    "postsnap": "npm run lintfix --"
+    "posttest": "npm run lint",
+    "postsnap": "npm run lintfix --",
+    "postlint": "npm-template-check",
+    "template-copy": "npm-template-copy --force",
+    "snap": "tap"
   },
   "dependencies": {
     "hosted-git-info": "^4.0.1",
@@ -27,15 +30,17 @@
     "validate-npm-package-license": "^3.0.1"
   },
   "devDependencies": {
-    "@npmcli/lint": "^1.0.2",
+    "@npmcli/template-oss": "^2.9.2",
     "tap": "^15.0.9"
   },
   "files": [
-    "lib/*.js",
-    "lib/*.json",
-    "AUTHORS"
+    "bin",
+    "lib"
   ],
   "engines": {
-    "node": ">=10"
+    "node": "^12.13.0 || ^14.15.0 || >=16"
+  },
+  "templateOSS": {
+    "version": "2.9.2"
   }
 }
