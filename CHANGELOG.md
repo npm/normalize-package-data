@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.1](https://github.com/npm/normalize-package-data/compare/v4.0.0...v4.0.1) (2022-08-15)
+
+
+### Bug Fixes
+
+* linting ([#146](https://github.com/npm/normalize-package-data/issues/146)) ([850038e](https://github.com/npm/normalize-package-data/commit/850038e68baa8155f55f9169977cb631fecbe1d4))
+
 ## [4.0.0](https://www.github.com/npm/normalize-package-data/compare/v3.0.3...v4.0.0) (2022-03-14)
 
 
