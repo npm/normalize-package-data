@@ -1,5 +1,19 @@
 # Changelog
 
+## [5.0.0](https://github.com/npm/normalize-package-data/compare/v4.0.1...v5.0.0) (2022-10-12)
+
+### ⚠️ BREAKING CHANGES
+
+* `normalize-package-data` is now compatible with the following semver range for node: `^14.17.0 || ^16.13.0 || >=18.0.0`
+
+### Features
+
+* [`c299178`](https://github.com/npm/normalize-package-data/commit/c299178b90a1be97a93bebd17204664c2f8d640e) [#156](https://github.com/npm/normalize-package-data/pull/156) postinstall for dependabot template-oss PR (@lukekarrys)
+
+### Dependencies
+
+* [`8a9c5ee`](https://github.com/npm/normalize-package-data/commit/8a9c5ee4f0e57e239069b44c9d89e8987efaaf40) [#164](https://github.com/npm/normalize-package-data/pull/164) `hosted-git-info@6.0.0` (#164)
+
 ## [4.0.1](https://github.com/npm/normalize-package-data/compare/v4.0.0...v4.0.1) (2022-08-15)
 
 
