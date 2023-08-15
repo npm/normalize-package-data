@@ -1,5 +1,19 @@
 # Changelog
 
+## [6.0.0](https://github.com/npm/normalize-package-data/compare/v5.0.0...v6.0.0) (2023-08-15)
+
+### ⚠️ BREAKING CHANGES
+
+* support for node 14 has been removed
+
+### Bug Fixes
+
+* [`2338ad0`](https://github.com/npm/normalize-package-data/commit/2338ad01a93ad731f100aaa385da81f5adfe1903) [#186](https://github.com/npm/normalize-package-data/pull/186) drop node14 support (@lukekarrys)
+
+### Dependencies
+
+* [`7b0f828`](https://github.com/npm/normalize-package-data/commit/7b0f82848d2a09c213d9749ffac70975fb5e61ca) [#185](https://github.com/npm/normalize-package-data/pull/185) bump hosted-git-info from 6.1.1 to 7.0.0
+
 ## [5.0.0](https://github.com/npm/normalize-package-data/compare/v4.0.1...v5.0.0) (2022-10-12)
 
 ### ⚠️ BREAKING CHANGES
