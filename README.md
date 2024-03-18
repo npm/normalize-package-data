@@ -1,6 +1,6 @@
 # normalize-package-data
 
-[![Build Status](https://travis-ci.org/npm/normalize-package-data.svg?branch=master)](https://travis-ci.org/npm/normalize-package-data)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/npm/normalize-package-data/ci.yml?branch=main)](https://github.com/npm/normalize-package-data)
 
 normalize-package-data exports a function that normalizes package metadata. This data is typically found in a package.json file, but in principle could come from any source - for example the npm registry.
 
