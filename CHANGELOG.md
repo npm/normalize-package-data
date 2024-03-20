@@ -1,5 +1,22 @@
 # Changelog
 
+## [6.0.1](https://github.com/npm/normalize-package-data/compare/v6.0.0...v6.0.1) (2024-03-20)
+
+### Documentation
+
+* [`c5b90cd`](https://github.com/npm/normalize-package-data/commit/c5b90cdaaee99adefb805a1e84289ff66e23cc38) [#214](https://github.com/npm/normalize-package-data/pull/214) readme: fix broken badge URL (#214) (@10xLaCroixDrinker)
+
+### Chores
+
+* [`d3bfe73`](https://github.com/npm/normalize-package-data/commit/d3bfe732968229ecaf4daec3ba5c2345ff8030fb) [#211](https://github.com/npm/normalize-package-data/pull/211) postinstall for dependabot template-oss PR (@lukekarrys)
+* [`a80c4a4`](https://github.com/npm/normalize-package-data/commit/a80c4a486e2f2624c8f368e9e40bd15887e0bcc4) [#211](https://github.com/npm/normalize-package-data/pull/211) bump @npmcli/template-oss from 4.21.1 to 4.21.3 (@dependabot[bot])
+* [`5c121d5`](https://github.com/npm/normalize-package-data/commit/5c121d5ab7ee591a5b20b0cf5fe141e8d4f56cf0) [#209](https://github.com/npm/normalize-package-data/pull/209) postinstall for dependabot template-oss PR (@lukekarrys)
+* [`bf8f217`](https://github.com/npm/normalize-package-data/commit/bf8f217f68cc59a25c88077e3b3eb08b750baaf6) [#209](https://github.com/npm/normalize-package-data/pull/209) bump @npmcli/template-oss from 4.19.0 to 4.21.1 (@dependabot[bot])
+* [`8774271`](https://github.com/npm/normalize-package-data/commit/8774271d8673f1ab09ca749650d0d691e6f25ffe) [#189](https://github.com/npm/normalize-package-data/pull/189) postinstall for dependabot template-oss PR (@lukekarrys)
+* [`34a76cd`](https://github.com/npm/normalize-package-data/commit/34a76cdb0b0eed9d21b1c93abcd5042d8e875417) [#189](https://github.com/npm/normalize-package-data/pull/189) bump @npmcli/template-oss from 4.18.1 to 4.19.0 (@dependabot[bot])
+* [`ec4dceb`](https://github.com/npm/normalize-package-data/commit/ec4dcebbc0510f8694dd31f2b662072ccbeffb74) [#188](https://github.com/npm/normalize-package-data/pull/188) postinstall for dependabot template-oss PR (@lukekarrys)
+* [`f4d4619`](https://github.com/npm/normalize-package-data/commit/f4d46193215cb3cce1af750cc3eaf61fb3efdef5) [#188](https://github.com/npm/normalize-package-data/pull/188) bump @npmcli/template-oss from 4.18.0 to 4.18.1 (@dependabot[bot])
+
 ## [6.0.0](https://github.com/npm/normalize-package-data/compare/v5.0.0...v6.0.0) (2023-08-15)
 
 ### ⚠️ BREAKING CHANGES
