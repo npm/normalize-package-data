@@ -1,5 +1,16 @@
 # Changelog
 
+## [6.0.1](https://github.com/npm/normalize-package-data/compare/v6.0.0...v6.0.1) (2024-04-21)
+
+### Documentation
+
+* [`c5b90cd`](https://github.com/npm/normalize-package-data/commit/c5b90cdaaee99adefb805a1e84289ff66e23cc38) [#214](https://github.com/npm/normalize-package-data/pull/214) readme: fix broken badge URL (#214) (@10xLaCroixDrinker)
+
+### Chores
+
+* [`c367107`](https://github.com/npm/normalize-package-data/commit/c36710711edc5b69405b2b1c3b85d7100de9217f) [#216](https://github.com/npm/normalize-package-data/pull/216) postinstall for dependabot template-oss PR (@lukekarrys)
+* [`f6b1f8c`](https://github.com/npm/normalize-package-data/commit/f6b1f8cff7a0eb346b82c76c9191bab2ae7d197e) [#216](https://github.com/npm/normalize-package-data/pull/216) bump @npmcli/template-oss from 4.21.3 to 4.21.4 (@dependabot[bot])
+
 ## [6.0.0](https://github.com/npm/normalize-package-data/compare/v5.0.0...v6.0.0) (2023-08-15)
 
 ### ⚠️ BREAKING CHANGES
