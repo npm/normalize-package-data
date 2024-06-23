@@ -22,7 +22,6 @@
   },
   "dependencies": {
     "hosted-git-info": "^7.0.0",
-    "is-core-module": "^2.8.1",
     "semver": "^7.3.5",
     "validate-npm-package-license": "^3.0.4"
   },
