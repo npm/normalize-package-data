@@ -1,5 +1,11 @@
 # Changelog
 
+## [6.0.2](https://github.com/npm/normalize-package-data/compare/v6.0.1...v6.0.2) (2024-06-25)
+
+### Dependencies
+
+* [`43bab20`](https://github.com/npm/normalize-package-data/commit/43bab2087123dd105235bee9e4d99a84fa179bd3) [#224](https://github.com/npm/normalize-package-data/pull/224) replace `is-core-module` with node builtin (#224) (@SuperchupuDev, @wraithgar)
+
 ## [6.0.1](https://github.com/npm/normalize-package-data/compare/v6.0.0...v6.0.1) (2024-05-04)
 
 ### Bug Fixes
