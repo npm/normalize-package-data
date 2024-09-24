@@ -22,7 +22,7 @@
     "eslint": "eslint \"**/*.{js,cjs,ts,mjs,jsx,tsx}\""
   },
   "dependencies": {
-    "hosted-git-info": "^7.0.0",
+    "hosted-git-info": "^8.0.0",
     "semver": "^7.3.5",
     "validate-npm-package-license": "^3.0.4"
   },
