@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.0.1](https://github.com/npm/normalize-package-data/compare/v7.0.0...v7.0.1) (2025-07-22)
+### Bug Fixes
+* [`97fb20a`](https://github.com/npm/normalize-package-data/commit/97fb20adabf7a6f22c67733252b2e30da520ed96) [#247](https://github.com/npm/normalize-package-data/pull/247) use `URL.canParse` instead of runtime deprecated `url.parse` api (#247) (@SuperchupuDev)
+* [`cc37f25`](https://github.com/npm/normalize-package-data/commit/cc37f25f02b8110ceded0cdfae5e4bb33dd2de0d) [#244](https://github.com/npm/normalize-package-data/pull/244) use `isBuiltin` instead of `builtinModules` (#244) (@SuperchupuDev)
+### Chores
+* [`acafa71`](https://github.com/npm/normalize-package-data/commit/acafa7127ca8af7cbb60813e63d197d418dd759f) [#245](https://github.com/npm/normalize-package-data/pull/245) bump @npmcli/template-oss from 4.24.4 to 4.25.0 (#245) (@dependabot[bot], @owlstronaut)
+
 ## [7.0.0](https://github.com/npm/normalize-package-data/compare/v6.0.2...v7.0.0) (2024-09-24)
 ### ⚠️ BREAKING CHANGES
 * `normalize-package-data` now supports node `^18.17.0 || >=20.5.0`
