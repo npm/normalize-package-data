@@ -1,5 +1,13 @@
 # Changelog
 
+## [8.0.0](https://github.com/npm/normalize-package-data/compare/v7.0.1...v8.0.0) (2025-07-24)
+### ⚠️ BREAKING CHANGES
+* `normalize-package-data` now supports node `^20.17.0 || >=22.9.0`
+### Bug Fixes
+* [`4b978e0`](https://github.com/npm/normalize-package-data/commit/4b978e07b4c257407a60aef4fa325bea6a773164) [#248](https://github.com/npm/normalize-package-data/pull/248) align to npm 11 node engine range (@owlstronaut)
+### Dependencies
+* [`7b28c1a`](https://github.com/npm/normalize-package-data/commit/7b28c1a84de9efa04b1f5d6a790e6fb082ef0244) [#248](https://github.com/npm/normalize-package-data/pull/248) `hosted-git-info@9.0.0`
+
 ## [7.0.1](https://github.com/npm/normalize-package-data/compare/v7.0.0...v7.0.1) (2025-07-22)
 ### Bug Fixes
 * [`97fb20a`](https://github.com/npm/normalize-package-data/commit/97fb20adabf7a6f22c67733252b2e30da520ed96) [#247](https://github.com/npm/normalize-package-data/pull/247) use `URL.canParse` instead of runtime deprecated `url.parse` api (#247) (@SuperchupuDev)
