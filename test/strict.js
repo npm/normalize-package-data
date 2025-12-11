@@ -1,8 +1,9 @@
-var test = require('tap').test
+const test = require('node:test')
+const assert = require('node:assert')
 
-var normalize = require('../')
+const normalize = require('../')
 
-test('strict', function (t) {
+test('strict', function () {
   var threw
 
   try {
@@ -10,9 +11,9 @@ test('strict', function (t) {
     normalize({ name: 'X' }, true)
   } catch (er) {
     threw = true
-    t.equal(er.message, 'Invalid name: "X"')
+    assert.strictEqual(er.message, 'Invalid name: "X"')
   } finally {
-    t.equal(threw, true)
+    assert.strictEqual(threw, true)
   }
 
   try {
@@ -20,9 +21,9 @@ test('strict', function (t) {
     normalize({ name: ' x ' }, true)
   } catch (er) {
     threw = true
-    t.equal(er.message, 'Invalid name: " x "')
+    assert.strictEqual(er.message, 'Invalid name: " x "')
   } finally {
-    t.equal(threw, true)
+    assert.strictEqual(threw, true)
   }
 
   try {
@@ -30,9 +31,9 @@ test('strict', function (t) {
     normalize({ name: 'x', version: '01.02.03' }, true)
   } catch (er) {
     threw = true
-    t.equal(er.message, 'Invalid version: "01.02.03"')
+    assert.strictEqual(er.message, 'Invalid version: "01.02.03"')
   } finally {
-    t.equal(threw, true)
+    assert.strictEqual(threw, true)
   }
 
   // these should not throw
@@ -43,7 +44,7 @@ test('strict', function (t) {
       z: '! 99 $$ASFJ(Aawenf90awenf as;naw.3j3qnraw || an elephant',
     } }
   normalize(slob, false)
-  t.same(slob,
+  assert.deepStrictEqual(slob,
     { name: 'X',
       version: '1.2.3',
       dependencies:
@@ -51,6 +52,4 @@ test('strict', function (t) {
               z: '! 99 $$ASFJ(Aawenf90awenf as;naw.3j3qnraw || an elephant' },
       readme: 'ERROR: No README data found!',
       _id: 'X@1.2.3' })
-
-  t.end()
 })

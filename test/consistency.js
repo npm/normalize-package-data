@@ -1,4 +1,5 @@
-const t = require('tap')
+const test = require('node:test')
+const assert = require('node:assert')
 const normalize = require('../lib/normalize')
 const fs = require('fs')
 const path = require('path')
@@ -6,7 +7,7 @@ const { promisify } = require('util')
 const readFile = promisify(fs.readFile)
 const readdir = promisify(fs.readdir)
 
-t.test('consistent normalization', async t => {
+test('consistent normalization', async () => {
   const entries = await readdir(path.join(__dirname, 'fixtures'))
   const verifyConsistency = async (entryName) => {
     const warn = () => null
@@ -17,7 +18,7 @@ t.test('consistent normalization', async t => {
     normalize(data, warn)
     const clonedData = { ...data }
     normalize(data, warn)
-    t.same(clonedData, data,
+    assert.deepStrictEqual(clonedData, data,
       'Normalization of ' + entryName + ' is consistent.')
   }
 

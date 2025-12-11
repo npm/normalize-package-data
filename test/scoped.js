@@ -1,59 +1,53 @@
-var test = require('tap').test
+const test = require('node:test')
+const assert = require('node:assert')
 
-var fixNameField = require('../lib/fixer.js').fixNameField
-var fixBinField = require('../lib/fixer.js').fixBinField
+const fixNameField = require('../lib/fixer.js').fixNameField
+const fixBinField = require('../lib/fixer.js').fixBinField
 
-test('a simple scoped module has a valid name', function (t) {
+test('a simple scoped module has a valid name', function () {
   var data = { name: '@org/package' }
   fixNameField(data, false)
-  t.equal(data.name, '@org/package', 'name was unchanged')
-
-  t.end()
+  assert.strictEqual(data.name, '@org/package', 'name was unchanged')
 })
 
-test("'org@package' is not a valid name", function (t) {
-  t.throws(function () {
+test("'org@package' is not a valid name", function () {
+  assert.throws(function () {
     fixNameField({ name: 'org@package' }, false)
   }, 'blows up as expected')
-
-  t.end()
 })
 
-test("'org=package' is not a valid name", function (t) {
-  t.throws(function () {
+test("'org=package' is not a valid name", function () {
+  assert.throws(function () {
     fixNameField({ name: 'org=package' }, false)
   }, 'blows up as expected')
-
-  t.end()
 })
 
-test("'@org=sub/package' is not a valid name", function (t) {
-  t.throws(function () {
+test("'@org=sub/package' is not a valid name", function () {
+  assert.throws(function () {
     fixNameField({ name: '@org=sub/package' }, false)
   }, 'blows up as expected')
-
-  t.end()
 })
 
-test("'@org/' is not a valid name", function (t) {
-  t.throws(function () {
+test("'@org/' is not a valid name", function () {
+  assert.throws(function () {
     fixNameField({ name: '@org/' }, false)
   }, 'blows up as expected')
-
-  t.end()
 })
 
-test("'@/package' is not a valid name", function (t) {
-  t.throws(function () {
+test("'@/package' is not a valid name", function () {
+  assert.throws(function () {
     fixNameField({ name: '@/package' }, false)
   }, 'blows up as expected')
-
-  t.end()
 })
 
-test("name='@org/package', bin='bin.js' is bin={package:'bin.js'}", function (t) {
+test("'@org/sub/package' is not a valid name (too many slashes)", function () {
+  assert.throws(function () {
+    fixNameField({ name: '@org/sub/package' }, false)
+  }, { message: /Invalid name/ }, 'blows up when scoped name has more than one slash')
+})
+
+test("name='@org/package', bin='bin.js' is bin={package:'bin.js'}", function () {
   var obj = { name: '@org/package', bin: 'bin.js' }
   fixBinField(obj)
-  t.strictSame(obj.bin, { package: 'bin.js' })
-  t.end()
+  assert.deepStrictEqual(obj.bin, { package: 'bin.js' })
 })
