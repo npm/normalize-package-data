@@ -1,10 +1,11 @@
-var test = require('tap').test
+const test = require('node:test')
+const assert = require('node:assert')
 
-var normalize = require('../')
-var warningMessages = require('../lib/warning_messages.json')
-var safeFormat = require('../lib/safe_format')
+const normalize = require('../')
+const warningMessages = require('../lib/warning_messages.json')
+const safeFormat = require('../lib/safe_format')
 
-test('typos', function (t) {
+test('typos', function () {
   var warnings = []
   function warn (m) {
     warnings.push(m)
@@ -56,7 +57,7 @@ test('typos', function (t) {
     name: 'name',
     version: '1.2.5' }, warn)
 
-  t.same(warnings, expect)
+  assert.deepStrictEqual(warnings, expect)
 
   warnings.length = 0
   expect =
@@ -73,7 +74,7 @@ test('typos', function (t) {
     version: '1.2.5',
     bugs: { web: 'url', name: 'url' } }, warn)
 
-  t.same(warnings, expect)
+  assert.deepStrictEqual(warnings, expect)
 
   warnings.length = 0
   expect =
@@ -87,7 +88,7 @@ test('typos', function (t) {
     version: '1.2.5',
     script: { server: 'start', tests: 'test' } }, warn)
 
-  t.same(warnings, expect)
+  assert.deepStrictEqual(warnings, expect)
 
   warnings.length = 0
   expect =
@@ -102,7 +103,7 @@ test('typos', function (t) {
     version: '1.2.5',
     scripts: { server: 'start', tests: 'test' } }, warn)
 
-  t.same(warnings, expect)
+  assert.deepStrictEqual(warnings, expect)
 
   warnings.length = 0
   expect =
@@ -118,7 +119,7 @@ test('typos', function (t) {
       start: 'start',
       test: 'test' } }, warn)
 
-  t.same(warnings, expect)
+  assert.deepStrictEqual(warnings, expect)
 
   warnings.length = 0
   expect = []
@@ -128,7 +129,5 @@ test('typos', function (t) {
     version: '1.2.5',
     scripts: { server: 'start', tests: 'test' } }, warn)
 
-  t.same(warnings, expect)
-
-  t.end()
+  assert.deepStrictEqual(warnings, expect)
 })

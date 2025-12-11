@@ -1,32 +1,65 @@
-var test = require('tap').test
+const test = require('node:test')
+const assert = require('node:assert')
 
-var normalize = require('../')
-var fixer = normalize.fixer
+const normalize = require('../')
+const fixer = normalize.fixer
 
-test('mixedcase', function (t) {
-  t.doesNotThrow(function () {
+test('mixedcase', function () {
+  assert.doesNotThrow(function () {
     fixer.fixNameField({ name: 'foo' }, true)
   })
 
-  t.doesNotThrow(function () {
+  assert.doesNotThrow(function () {
     fixer.fixNameField({ name: 'foo' }, false)
   })
 
-  t.doesNotThrow(function () {
+  assert.doesNotThrow(function () {
     fixer.fixNameField({ name: 'foo' })
   })
 
-  t.throws(function () {
+  assert.throws(function () {
     fixer.fixNameField({ name: 'Foo' }, true)
   }, new Error('Invalid name: "Foo"'), 'should throw an error')
 
-  t.throws(function () {
+  assert.throws(function () {
     fixer.fixNameField({ name: 'Foo' }, { strict: true })
   }, new Error('Invalid name: "Foo"'), 'should throw an error')
 
-  t.doesNotThrow(function () {
+  assert.doesNotThrow(function () {
     fixer.fixNameField({ name: 'Foo' }, { strict: true, allowLegacyCase: true })
   })
+})
 
-  t.end()
+test('non-string name throws error', function () {
+  assert.throws(
+    function () {
+      fixer.fixNameField({ name: 123 }, true)
+    },
+    { name: 'Error', message: 'name field must be a string.' },
+    'should throw error for number name'
+  )
+
+  assert.throws(
+    function () {
+      fixer.fixNameField({ name: { foo: 'bar' } }, true)
+    },
+    { name: 'Error', message: 'name field must be a string.' },
+    'should throw error for object name'
+  )
+
+  assert.throws(
+    function () {
+      fixer.fixNameField({ name: ['array'] }, true)
+    },
+    { name: 'Error', message: 'name field must be a string.' },
+    'should throw error for array name'
+  )
+
+  assert.throws(
+    function () {
+      fixer.fixNameField({ name: null }, true)
+    },
+    { name: 'Error', message: 'name field must be a string.' },
+    'should throw error for null name'
+  )
 })
