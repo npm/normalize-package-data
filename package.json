@@ -24,7 +24,7 @@
     "test:cover": "node --test --experimental-test-coverage --test-timeout=3000 --test-coverage-lines=97 --test-coverage-functions=97 --test-coverage-branches=97 './test/**/*.js'"
   },
   "dependencies": {
-    "hosted-git-info": "^9.0.0",
+    "hosted-git-info": "^10.1.0",
     "semver": "^7.3.5",
     "validate-npm-package-license": "^3.0.4"
   },
