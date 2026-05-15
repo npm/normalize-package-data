@@ -66,7 +66,7 @@ test('core module name', function () {
   function warn (m) {
     warnings.push(m)
   }
-  var coreModules = ['http', '_stream_writable']
+  var coreModules = ['http', 'stream']
   var expect = []
   for (var i = 0; i < coreModules.length; ++i) {
     normalize({
