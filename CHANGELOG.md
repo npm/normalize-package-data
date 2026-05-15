@@ -1,5 +1,23 @@
 # Changelog
 
+## [9.0.0](https://github.com/npm/normalize-package-data/compare/v8.0.0...v9.0.0) (2026-05-15)
+### ⚠️ BREAKING CHANGES
+* `normalize-package-data` now supports node `^22.22.2 || ^24.15.0 || >=26.0.0`
+* template-oss-apply
+### Features
+* [`cbaa5da`](https://github.com/npm/normalize-package-data/commit/cbaa5da307d633eaeba4cac093f1af5a4766e7c1) [#262](https://github.com/npm/normalize-package-data/pull/262) bump to new node engine range (@owlstronaut)
+* [`d000032`](https://github.com/npm/normalize-package-data/commit/d0000323f6b4a106cf2975c8c3d6302d9404f342) [#262](https://github.com/npm/normalize-package-data/pull/262) template-oss-apply (@owlstronaut)
+### Dependencies
+* [`afe6b48`](https://github.com/npm/normalize-package-data/commit/afe6b48a7fcbbd47a3968ba59014d08fa0dd9659) [#262](https://github.com/npm/normalize-package-data/pull/262) `hosted-git-info@10.1.0`
+### Chores
+* [`6e35b4b`](https://github.com/npm/normalize-package-data/commit/6e35b4b0493a42e065f618c7c0987381c22128b9) [#262](https://github.com/npm/normalize-package-data/pull/262) replace removed _stream_writable with stream for Node 26 compatibility (@owlstronaut)
+* [`0642c80`](https://github.com/npm/normalize-package-data/commit/0642c807cd4bf5e93628ec6da19e97a2fb3c5779) [#262](https://github.com/npm/normalize-package-data/pull/262) template-oss-apply (@owlstronaut)
+* [`93d9b37`](https://github.com/npm/normalize-package-data/commit/93d9b37b83f952f4b906d4c9de7ed11de51a7cfa) [#262](https://github.com/npm/normalize-package-data/pull/262) bumping @npmcli/template-oss from 4.30.0 to 5.1.0 (@owlstronaut)
+* [`aa01d03`](https://github.com/npm/normalize-package-data/commit/aa01d035e74a3d7d83d1cd5466ba4988e910c9e3) [#256](https://github.com/npm/normalize-package-data/pull/256) remove tap (@owlstronaut)
+* [`13311b5`](https://github.com/npm/normalize-package-data/commit/13311b5dfcd868c54a0f1120ad5c5a523b56ef52) [#256](https://github.com/npm/normalize-package-data/pull/256) swap from tap to built-in node:test (@owlstronaut)
+* [`0b5961e`](https://github.com/npm/normalize-package-data/commit/0b5961e53d9ed76b0a444f7d9e2d176939ae141a) [#253](https://github.com/npm/normalize-package-data/pull/253) bump @npmcli/eslint-config from 5.1.0 to 6.0.0 (#253) (@dependabot[bot])
+* [`e01f4b9`](https://github.com/npm/normalize-package-data/commit/e01f4b9d4ee78b5b98c8c7c44cda172e2fcc1461) [#258](https://github.com/npm/normalize-package-data/pull/258) bump @npmcli/template-oss from 4.29.0 to 4.30.0 (#258) (@dependabot[bot], @npm-cli-bot)
+
 ## [8.0.0](https://github.com/npm/normalize-package-data/compare/v7.0.1...v8.0.0) (2025-07-24)
 ### ⚠️ BREAKING CHANGES
 * `normalize-package-data` now supports node `^20.17.0 || >=22.9.0`
