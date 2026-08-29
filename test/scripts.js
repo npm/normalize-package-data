@@ -50,7 +50,7 @@ test('does not set gypfile when install script is different', function () {
   assert.strictEqual(data.gypfile, undefined, 'gypfile should not be set')
 })
 
-test('does not set gypfile when preinstall script exists', function () {
+test('sets gypfile when preinstall script exists', function () {
   var data = {
     name: 'test-package',
     version: '1.0.0',
@@ -60,7 +60,7 @@ test('does not set gypfile when preinstall script exists', function () {
     },
   }
   normalize(data)
-  assert.strictEqual(data.gypfile, undefined, 'gypfile should not be set when preinstall exists')
+  assert.strictEqual(data.gypfile, true, 'gypfile should be set when preinstall exists')
 })
 
 test('removes non-string script values', function () {
