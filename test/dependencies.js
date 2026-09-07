@@ -110,6 +110,23 @@ test('warn if dependencies is not an object', function () {
   )
 })
 
+test('array dependencies handle scoped package names', function () {
+  var warnings = []
+  function warn (w) {
+    warnings.push(w)
+  }
+  var data = {
+    name: 'test-package',
+    version: '1.0.0',
+    dependencies: ['@babel/core@^7.0.0', 'lodash@^4.17.0'],
+  }
+  normalize(data, warn)
+  assert.deepStrictEqual(data.dependencies, {
+    '@babel/core': '^7.0.0',
+    lodash: '^4.17.0',
+  })
+})
+
 test('safeFormat throws TypeError on falsy argument', function () {
   assert.throws(
     () => safeFormat(null),
