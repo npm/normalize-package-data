@@ -35,6 +35,96 @@ test('consistent normalization', async () => {
   return Promise.all(entries.map(i => verifyConsistency(i)))
 })
 
+test('repairs schemeless hosted repository URLs', function () {
+  const cases = [
+    {
+      url: 'github.com/hgoebl/mobile-detect.js',
+      expected: 'git+https://github.com/hgoebl/mobile-detect.js.git',
+    },
+    {
+      url: 'gitlab.com/user/repo',
+      expected: 'git+https://gitlab.com/user/repo.git',
+    },
+    {
+      url: 'bitbucket.org/user/repo',
+      expected: 'git+https://bitbucket.org/user/repo.git',
+    },
+    {
+      url: 'www.github.com/user/repo',
+      expected: 'git+https://github.com/user/repo.git',
+    },
+    {
+      url: 'github.com/user/repo.git',
+      expected: 'git+https://github.com/user/repo.git',
+    },
+    {
+      url: '//github.com/user/repo',
+      expected: 'git+https://github.com/user/repo.git',
+    },
+  ]
+
+  for (const { url, expected } of cases) {
+    const data = {
+      name: 'test-package',
+      version: '1.0.0',
+      repository: { type: 'git', url },
+    }
+    normalize(data)
+    assert.deepStrictEqual(
+      data.repository,
+      { type: 'git', url: expected },
+      'should repair ' + url
+    )
+  }
+})
+
+test('repairs schemeless repository string and derives bugs/homepage', function () {
+  const data = {
+    name: 'test-package',
+    version: '1.0.0',
+    repository: 'github.com/hgoebl/mobile-detect.js',
+  }
+  normalize(data)
+  assert.deepStrictEqual(data.repository, {
+    type: 'git',
+    url: 'git+https://github.com/hgoebl/mobile-detect.js.git',
+  })
+  assert.deepStrictEqual(data.bugs, {
+    url: 'https://github.com/hgoebl/mobile-detect.js/issues',
+  })
+  assert.strictEqual(data.homepage, 'https://github.com/hgoebl/mobile-detect.js#readme')
+})
+
+test('leaves unrecognized schemeless repository URLs unchanged', function () {
+  const data = {
+    name: 'test-package',
+    version: '1.0.0',
+    repository: { type: 'git', url: 'example.com/user/repo' },
+  }
+  normalize(data)
+  assert.strictEqual(data.repository.url, 'example.com/user/repo')
+})
+
+test('leaves unrecognized protocol-relative repository URLs unchanged', function () {
+  const data = {
+    name: 'test-package',
+    version: '1.0.0',
+    repository: { type: 'git', url: '//example.com/user/repo' },
+  }
+  normalize(data)
+  assert.strictEqual(data.repository.url, '//example.com/user/repo')
+})
+
+test('does not rewrite unknown schemed repository URLs', function () {
+  const data = {
+    name: 'test-package',
+    version: '1.0.0',
+    repository: { type: 'git', url: 'https://example.com/user/repo.git' },
+  }
+  normalize(data)
+  assert.strictEqual(data.repository.url, 'https://example.com/user/repo.git')
+})
+
 test('warns about broken git URL with double .git.git', function () {
   const warnings = []
   const warn = (w) => warnings.push(w)
