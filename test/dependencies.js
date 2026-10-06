@@ -110,6 +110,17 @@ test('warn if dependencies is not an object', function () {
   )
 })
 
+test('preserve scoped package names in array dependencies', function () {
+  var data = {
+    dependencies: ['@scope/pkg@^1.2.3', '@scope/without-version'],
+  }
+  normalize(data)
+  assert.deepStrictEqual(data.dependencies, {
+    '@scope/pkg': '^1.2.3',
+    '@scope/without-version': '',
+  })
+})
+
 test('safeFormat throws TypeError on falsy argument', function () {
   assert.throws(
     () => safeFormat(null),
